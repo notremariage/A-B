@@ -433,18 +433,40 @@ envScreen.addEventListener('click',function handler(){
 });
 
 function startMusic(){
-  try{
-    // Correct raw URL for your GitHub file
-    audio=new Audio('https://github.com/notremariage/A-B/raw/main/music.mp3');
+  /*
+   * On essaie plusieurs URLs dans l'ordre :
+   * 1. Chemin relatif (marche sur GitHub Pages)
+   * 2. GitHub Pages URL directe
+   * 3. GitHub raw (dernier recours)
+   */
+  const urls=[
+    'music.mp3',
+    'https://notremariage.github.io/A-B/music.mp3',
+    'https://github.com/notremariage/A-B/raw/main/music.mp3'
+  ];
+  tryNextURL(0);
+
+  function tryNextURL(i){
+    if(i>=urls.length){console.log('Aucune source audio disponible');return}
+    audio=new Audio(urls[i]);
     audio.loop=true;
     audio.volume=0.35;
-    audio.crossOrigin='anonymous';
+    audio.addEventListener('error',function(){
+      console.log('Échec:',urls[i]);
+      tryNextURL(i+1);
+    },{once:true});
     const p=audio.play();
     if(p!==undefined){
-      p.then(()=>{musicPlaying=true;musicBars.classList.add('playing')})
-       .catch(()=>{musicPlaying=false;musicBars.classList.remove('playing')});
+      p.then(()=>{
+        musicPlaying=true;
+        musicBars.classList.add('playing');
+        console.log('Musique OK:',urls[i]);
+      }).catch(()=>{
+        musicPlaying=false;
+        musicBars.classList.remove('playing');
+      });
     }
-  }catch(e){console.log('Audio:',e)}
+  }
 }
 
 musicToggle.addEventListener('click',()=>{
