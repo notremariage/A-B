@@ -106,11 +106,20 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .btn-rsvp{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;background:linear-gradient(135deg,var(--sage),var(--sage-dark));color:var(--white);border-radius:30px;padding:1rem 2.5rem;margin-top:.5rem;transition:all .4s;position:relative;overflow:hidden}
 .btn-rsvp::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--terracotta),var(--brown-warm));opacity:0;transition:opacity .4s;border-radius:30px}.btn-rsvp span{position:relative;z-index:1}.btn-rsvp:hover::before{opacity:1}.btn-rsvp:hover{transform:translateY(-2px)}.btn-rsvp:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .rsvp-status{margin-top:1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;text-align:center;display:none}.rsvp-status.success{display:block;color:var(--sage-dark)}.rsvp-status.error{display:block;color:var(--terracotta)}
-.game-section{background:var(--linen-light);max-width:none;padding:4rem 2rem;text-align:center}
-#slimeGame{max-width:800px;margin:1.5rem auto 0;border-radius:8px;box-shadow:0 8px 30px rgba(106,91,74,.12);border:3px solid var(--sage-pale);display:block}
-.game-controls-info{font-family:'Caveat',cursive;font-size:1rem;color:var(--text-medium);margin-top:1rem;line-height:1.6}
-.btn-game{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;border:1px solid var(--sage);background:transparent;color:var(--sage);border-radius:25px;padding:.7rem 2rem;cursor:pointer;transition:all .3s;margin:.5rem}.btn-game:hover{background:var(--sage);color:var(--white)}.btn-game.active{background:var(--sage);color:var(--white)}
-.game-score-display{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-top:.8rem;color:var(--text-dark)}
+.game-section{background:var(--linen-light);max-width:none;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
+.game-bg{position:absolute;inset:0;z-index:0;background-image:url('https://github.com/notremariage/A-B/blob/main/images/ireland.jpg?raw=true');background-size:cover;background-position:center;opacity:.12}
+.game-container{position:relative;z-index:1;max-width:460px;margin:0 auto}
+.c4-board{display:inline-grid;grid-template-columns:repeat(7,1fr);gap:6px;background:linear-gradient(135deg,var(--sage),var(--sage-dark));border-radius:16px;padding:12px;box-shadow:0 10px 40px rgba(0,0,0,.15);margin-top:1.5rem}
+.c4-cell{width:52px;height:52px;border-radius:50%;background:var(--ivory);border:3px solid rgba(0,0,0,.08);cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.c4-cell:hover{background:var(--linen);transform:scale(1.05)}
+.c4-cell.red{background:radial-gradient(circle at 35% 35%,#ff6b6b,#DC143C 60%,#8B0000);border-color:rgba(139,0,0,.3);cursor:default}
+.c4-cell.yellow{background:radial-gradient(circle at 35% 35%,#FFD700,#FFA500 60%,#B8860B);border-color:rgba(184,134,11,.3);cursor:default}
+.c4-cell.win{animation:c4pulse 0.6s ease-in-out infinite alternate;box-shadow:0 0 15px rgba(255,255,255,.5)}
+.c4-cell.last{box-shadow:0 0 0 3px rgba(255,255,255,.4)}
+@keyframes c4pulse{0%{transform:scale(1)}100%{transform:scale(1.1)}}
+@media(max-width:500px){.c4-cell{width:40px;height:40px}.c4-board{gap:4px;padding:8px}}
+.c4-status{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text-dark);margin-top:1.2rem;min-height:2rem}
+.btn-game{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;border:1px solid var(--sage);background:transparent;color:var(--sage);border-radius:25px;padding:.7rem 2rem;cursor:pointer;transition:all .3s;margin-top:1rem}.btn-game:hover{background:var(--sage);color:var(--white)}
 footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;padding:4rem 2rem;position:relative}
 .footer-message{position:relative;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;max-width:480px;margin:0 auto;line-height:1.9}
 .footer-ornament{position:relative;margin:2rem 0 1.5rem;opacity:.2;letter-spacing:1rem;color:var(--sage-pale)}
@@ -197,15 +206,15 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 </form><div class="rsvp-status" id="rsvpStatus"></div>
 </div></section></div>
 <div class="section-wide game-section">
-<section><div class="reveal"><p class="section-label">Un petit défi ?</p><h2 class="section-title">⚽ Défie le Marié !</h2></div>
+<div class="game-bg"></div>
+<section><div class="reveal"><p class="section-label">Un petit défi ?</p><h2 class="section-title">🎯 Défie les Mariés !</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
-<p class="game-controls-info reveal">Viens défier Baptiste au Slime Soccer !<br>Flèches ← → pour bouger, ↑ pour sauter, ↓ pour attraper</p>
-<div class="reveal reveal-d1">
-<button class="btn-game" onclick="slimeStartGame(60)">1 Minute</button>
-<button class="btn-game" onclick="slimeStartGame(120)">2 Minutes</button>
+<div class="game-container reveal reveal-d1">
+<p style="font-family:'Caveat',cursive;font-size:1.1rem;color:var(--text-medium);margin-bottom:.5rem">Puissance 4 — Toi (rouge) contre les mariés (jaune) 💛</p>
+<div class="c4-board" id="c4Board"></div>
+<div class="c4-status" id="c4Status">Clique sur une colonne pour jouer !</div>
+<button class="btn-game" id="c4Reset" onclick="c4Reset()" style="display:none">Rejouer</button>
 </div>
-<canvas id="slimeGame" width="800" height="400" class="reveal reveal-d2" style="max-width:100%;height:auto"></canvas>
-<div class="game-score-display" id="slimeScore"></div>
 </section></div>
 <footer><div class="footer-message">Nous avons hâte de partager cette journée magique avec vous.</div><div class="footer-ornament">❧ ✿ ❧</div><div class="footer-names">Anaïs &amp; Baptiste</div></footer>
 </div>
@@ -235,7 +244,7 @@ function uCD(){var d=wD-new Date();if(d<=0)return;document.getElementById('cd-da
 // === SCROLL REVEAL ===
 var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
 
-// === RSVP via FormSubmit ===
+// === RSVP ===
 document.getElementById('rsvpForm').addEventListener('submit',function(e){
   e.preventDefault();var form=e.target,status=document.getElementById('rsvpStatus'),btn=document.getElementById('rsvpBtn');
   var fd=new FormData(form);status.style.display='block';status.className='rsvp-status';status.style.color='var(--text-light)';status.textContent='Envoi en cours…';btn.disabled=true;
@@ -247,188 +256,142 @@ document.getElementById('rsvpForm').addEventListener('submit',function(e){
 });
 
 // ══════════════════════════════════
-// ===   SLIME SOCCER GAME       ===
+// ===   PUISSANCE 4 (Hard AI)   ===
 // ══════════════════════════════════
 (function(){
-var canvas=document.getElementById('slimeGame'),ctx=canvas.getContext('2d');
-var W=800,H=400,GH=80,SR=40,BR=10,GW=80,GOH=120;
-var GRAV=0.6,SPD=5,JUMP=-12,BDAMP=0.99,BBOUNCE=0.8,MAXBS=13;
-var keys={},gameOn=false,timer=0,timerInt=null,animId=null;
-var baptImg=new Image();baptImg.crossOrigin='anonymous';
-baptImg.src='https://github.com/notremariage/A-B/blob/main/images/20240610_183422.png?raw=true';
+var ROWS=6,COLS=7,board,human='red',ai='yellow',gameOver,currentPlayer;
+var boardEl=document.getElementById('c4Board');
+var statusEl=document.getElementById('c4Status');
+var resetBtn=document.getElementById('c4Reset');
 
-var L,R,ball;
-function initState(){
-  L={x:200,y:H-GH,vx:0,vy:0,grab:false,hasBall:false,glt:0,tgtX:200,cd:0,stable:true,stuckC:0,lastBY:150};
-  R={x:600,y:H-GH,vx:0,vy:0,grab:false,hasBall:false,glt:0};
-  ball={x:W/2,y:150,vx:0,vy:0,grabbed:null,gAngle:0,gAV:0};
-}
-initState();
-
-window.addEventListener('keydown',function(e){
-  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
-  var k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright'].indexOf(k)>=0)e.preventDefault();keys[k]=true;
-});
-window.addEventListener('keyup',function(e){keys[e.key.toLowerCase()]=false});
-
-function resetPos(){
-  L.x=200;L.y=H-GH;L.vx=0;L.vy=0;L.grab=false;L.hasBall=false;L.glt=0;L.tgtX=200;L.cd=0;L.stable=true;L.stuckC=0;
-  R.x=600;R.y=H-GH;R.vx=0;R.vy=0;R.grab=false;R.hasBall=false;R.glt=0;
-  ball.x=W/2;ball.y=150;ball.vx=0;ball.vy=0;ball.grabbed=null;ball.gAngle=0;ball.gAV=0;
+function init(){
+  board=[];for(var r=0;r<ROWS;r++){board[r]=[];for(var c=0;c<COLS;c++)board[r][c]=null}
+  gameOver=false;currentPlayer=human;
+  render();statusEl.textContent='À toi de jouer !';resetBtn.style.display='none';
 }
 
-var scoreL=0,scoreR=0;
-
-// AI for Baptiste (left slime)
-function updateAI(){
-  var ai=L,b=ball;
-  if(ai.cd>0){ai.cd--;var df=ai.tgtX-ai.x;if(Math.abs(df)>10)ai.vx=Math.sign(df)*SPD*Math.min(Math.abs(df)/50,1);else ai.vx=0;return}
-  if(ai.stable&&timer>55){ai.tgtX=200;ai.vx=0;if(Math.abs(b.x-ai.x)<150||timer<=55)ai.stable=false;return}
-
-  var ballStuck=Math.abs(b.y-ai.lastBY)<5&&Math.abs(b.vx)<2;ai.stuckC=ballStuck?ai.stuckC+1:0;ai.lastBY=b.y;
-  var newTgt=ai.tgtX,jump=false,grab=false,ms=SPD;
-  var bDist=Math.abs(ai.x-b.x),bH=H-GH-b.y;
-
-  // Predict ball
-  var pX=b.x,pY=b.y,pVx=b.vx,pVy=b.vy,preds=[];
-  for(var t=0;t<80;t++){pVy+=GRAV;pVx*=BDAMP;pX+=pVx;pY+=pVy;if(pX<BR){pX=BR;pVx*=-BBOUNCE}if(pX>W-BR){pX=W-BR;pVx*=-BBOUNCE}preds.push({x:pX,y:pY,t:t});if(pY>H-GH-BR)break}
-
-  if(b.x>W*0.35||Math.abs(b.x-W+GW/2)<Math.abs(b.x-GW/2)*1.5){
-    // Attack
-    if(bH>60&&bDist<150)newTgt=b.x-45;else if(bH<30&&bDist<100)newTgt=b.x-20;else newTgt=b.x-30;
-    ms=SPD*1.1;
-    if(bDist<100){
-      if(ai.stuckC>30){jump=true;newTgt=b.x-40}
-      else if(bH<35&&bDist<60&&!ai.hasBall&&b.vy>-2)grab=true;
-      else if(bH>30&&bH<90&&ai.y>=H-GH-1)jump=true;
-    }
-    if(ai.hasBall&&(ai.x>W*0.7))grab=false;
-  } else {
-    // Defend
-    var best=b.x;
-    for(var i=0;i<preds.length;i++){if(preds[i].x<W*0.4){var ttR=Math.abs(ai.x-preds[i].x)/(SPD*1.2);if(ttR<=preds[i].t+5){best=preds[i].x;break}}}
-    newTgt=best;
-    if(b.x<GW*2.5&&b.vx<-1){newTgt=Math.max(b.x-10,SR);ms=SPD*1.2;if(bDist<120&&bH<100)jump=true}
-    if(ai.stuckC>20&&b.x<W*0.3){jump=true;newTgt=b.x+30}
+function render(){
+  boardEl.innerHTML='';
+  for(var r=0;r<ROWS;r++)for(var c=0;c<COLS;c++){
+    var cell=document.createElement('div');cell.className='c4-cell';
+    if(board[r][c]==='red')cell.classList.add('red');
+    if(board[r][c]==='yellow')cell.classList.add('yellow');
+    cell.dataset.col=c;cell.dataset.row=r;
+    cell.addEventListener('click',function(){onCellClick(parseInt(this.dataset.col))});
+    boardEl.appendChild(cell);
   }
-  if(Math.abs(newTgt-ai.tgtX)>15){ai.tgtX=newTgt;ai.cd=10}
-  if(grab&&!ai.grab&&ai.y>=H-GH-1)ai.grab=true;else if(!grab)ai.grab=false;
-  var df2=ai.tgtX-ai.x;if(Math.abs(df2)>10)ai.vx=Math.sign(df2)*ms*Math.min(Math.abs(df2)/50,1);else ai.vx=0;
-  if(jump&&ai.vy===0&&!ai.grab)ai.vy=JUMP;
 }
 
-function physics(){
-  // Human controls right slime
-  if(keys['arrowleft'])R.vx=-SPD;else if(keys['arrowright'])R.vx=SPD;else R.vx=0;
-  if(keys['arrowup']&&R.y>=H-GH-1&&!R.grab)R.vy=JUMP;
-  R.grab=!!keys['arrowdown'];
-  updateAI();
+function getRow(b,col){for(var r=ROWS-1;r>=0;r--)if(!b[r][col])return r;return -1}
 
-  [L,R].forEach(function(s,idx){
-    s.vy+=GRAV;s.x+=s.vx;s.y+=s.vy;
-    if(s.x<SR)s.x=SR;if(s.x>W-SR)s.x=W-SR;
-    if(s.y>H-GH){s.y=H-GH;s.vy=0}
-    var own=(idx===0&&s.x<GW)||(idx===1&&s.x>W-GW);
-    if(own){s.glt+=1/60;if(s.glt>=1){if(idx===0)scoreR++;else scoreL++;resetPos()}}else s.glt=0;
-  });
+function checkWin(b,row,col){
+  var p=b[row][col];if(!p)return null;
+  var dirs=[[0,1],[1,0],[1,1],[1,-1]];
+  for(var d=0;d<dirs.length;d++){
+    var dr=dirs[d][0],dc=dirs[d][1],cells=[[row,col]];
+    for(var s=-1;s<=1;s+=2){var nr=row+dr*s,nc=col+dc*s;
+      while(nr>=0&&nr<ROWS&&nc>=0&&nc<COLS&&b[nr][nc]===p){cells.push([nr,nc]);nr+=dr*s;nc+=dc*s}}
+    if(cells.length>=4)return{winner:p,cells:cells};
+  }
+  return null;
+}
 
-  // Ball
-  if(ball.grabbed){
-    var g=ball.grabbed==='left'?L:R;
-    var dir=ball.grabbed==='left'?1:-1;
-    ball.gAV+=-g.vx*0.008*dir;ball.gAV*=0.85;ball.gAngle+=ball.gAV;
-    if(ball.grabbed==='left'){if(ball.gAngle<-Math.PI/2){ball.gAngle=-Math.PI/2;ball.gAV=0}if(ball.gAngle>Math.PI/2){ball.gAngle=Math.PI/2;ball.gAV=0}}
-    else{while(ball.gAngle<0)ball.gAngle+=Math.PI*2;while(ball.gAngle>Math.PI*2)ball.gAngle-=Math.PI*2;if(ball.gAngle<Math.PI/2&&ball.gAngle>=0){ball.gAngle=Math.PI/2;ball.gAV=0}if(ball.gAngle>3*Math.PI/2){ball.gAngle=3*Math.PI/2;ball.gAV=0}}
-    var hd=SR+BR-5;ball.x=g.x+Math.cos(ball.gAngle)*hd;ball.y=g.y+Math.sin(ball.gAngle)*hd;ball.vx=g.vx;ball.vy=g.vy;
-    if(!g.grab){var rs=Math.abs(ball.gAV)*20;ball.vx=g.vx*1.5+Math.cos(ball.gAngle)*(3+rs);ball.vy=g.vy-2+Math.sin(ball.gAngle)*rs*0.3;ball.grabbed=null;ball.gAngle=0;ball.gAV=0;g.hasBall=false}
+function isFull(b){for(var c=0;c<COLS;c++)if(getRow(b,c)!==-1)return false;return true}
+
+// Minimax with alpha-beta pruning (depth 7 = hard)
+function evaluate(b){
+  var score=0;
+  // Score center column
+  for(var r=0;r<ROWS;r++){if(b[r][3]===ai)score+=3;if(b[r][3]===human)score-=3}
+  // Score all windows of 4
+  for(var r=0;r<ROWS;r++)for(var c=0;c<COLS;c++){
+    var dirs=[[0,1],[1,0],[1,1],[1,-1]];
+    for(var d=0;d<dirs.length;d++){
+      var w=[];for(var k=0;k<4;k++){var nr=r+dirs[d][0]*k,nc=c+dirs[d][1]*k;
+        if(nr>=0&&nr<ROWS&&nc>=0&&nc<COLS)w.push(b[nr][nc]);else{w=null;break}}
+      if(!w)continue;
+      var ac=0,hc=0,ec=0;
+      for(var i=0;i<4;i++){if(w[i]===ai)ac++;else if(w[i]===human)hc++;else ec++}
+      if(ac===4)score+=100000;else if(hc===4)score-=100000;
+      else if(hc===0){if(ac===3)score+=50;else if(ac===2)score+=5}
+      else if(ac===0){if(hc===3)score-=80;else if(hc===2)score-=5}
+    }
+  }
+  return score;
+}
+
+function minimax(b,depth,alpha,beta,maximizing){
+  // Check terminal
+  for(var r=0;r<ROWS;r++)for(var c=0;c<COLS;c++){
+    if(b[r][c]){var w=checkWin(b,r,c);if(w){if(w.winner===ai)return{score:100000+depth};if(w.winner===human)return{score:-100000-depth}}}
+  }
+  if(isFull(b))return{score:0};
+  if(depth===0)return{score:evaluate(b)};
+
+  var validCols=[];for(var c=0;c<COLS;c++)if(getRow(b,c)!==-1)validCols.push(c);
+  // Order: center first
+  validCols.sort(function(a,bb){return Math.abs(a-3)-Math.abs(bb-3)});
+
+  if(maximizing){
+    var best={score:-Infinity,col:validCols[0]};
+    for(var i=0;i<validCols.length;i++){
+      var c=validCols[i],r=getRow(b,c);
+      b[r][c]=ai;var result=minimax(b,depth-1,alpha,beta,false);b[r][c]=null;
+      if(result.score>best.score){best={score:result.score,col:c}}
+      alpha=Math.max(alpha,result.score);if(beta<=alpha)break;
+    }
+    return best;
   }else{
-    ball.vy+=GRAV;ball.vx*=BDAMP;ball.x+=ball.vx;ball.y+=ball.vy;
+    var best={score:Infinity,col:validCols[0]};
+    for(var i=0;i<validCols.length;i++){
+      var c=validCols[i],r=getRow(b,c);
+      b[r][c]=human;var result=minimax(b,depth-1,alpha,beta,true);b[r][c]=null;
+      if(result.score<best.score){best={score:result.score,col:c}}
+      beta=Math.min(beta,result.score);if(beta<=alpha)break;
+    }
+    return best;
   }
-  if(ball.x<BR){ball.x=BR;ball.vx*=-BBOUNCE}if(ball.x>W-BR){ball.x=W-BR;ball.vx*=-BBOUNCE}
-  if(ball.y>H-GH-BR){ball.y=H-GH-BR;ball.vy*=-BBOUNCE}
-  if(ball.y<BR){ball.y=BR;ball.vy*=-BBOUNCE}
-  // Goals
-  if(ball.x<=BR&&ball.y>H-GH-GOH){scoreR++;resetPos()}
-  if(ball.x>=W-BR&&ball.y>H-GH-GOH){scoreL++;resetPos()}
-
-  // Slime-ball collision
-  [L,R].forEach(function(s,idx){
-    var nm=idx===0?'left':'right',other=idx===0?R:L;
-    var dx=ball.x-s.x,dy=ball.y-s.y,dist=Math.sqrt(dx*dx+dy*dy);
-    if(dist<SR+BR){
-      if(ball.grabbed&&ball.grabbed!==nm){var spd=Math.sqrt(s.vx*s.vx+s.vy*s.vy);if(spd>2||Math.abs(s.vy)>5){ball.grabbed=null;ball.gAngle=0;ball.gAV=0;other.hasBall=false;var a=Math.atan2(dy,dx);ball.vx=Math.cos(a)*8+s.vx;ball.vy=Math.sin(a)*8+s.vy}}
-      else if(s.grab&&!ball.grabbed){ball.grabbed=nm;ball.gAngle=Math.atan2(dy,dx);ball.gAV=0;s.hasBall=true}
-      else if(!ball.grabbed){var a2=Math.atan2(dy,dx);if(ball.y<s.y||Math.abs(a2)<Math.PI*0.5){ball.x=s.x+Math.cos(a2)*(SR+BR);ball.y=s.y+Math.sin(a2)*(SR+BR);var sp=Math.sqrt(ball.vx*ball.vx+ball.vy*ball.vy);ball.vx=Math.cos(a2)*sp*1.5+s.vx*0.5;ball.vy=Math.sin(a2)*sp*1.5+s.vy*0.5;var ns=Math.sqrt(ball.vx*ball.vx+ball.vy*ball.vy);if(ns>MAXBS){var sc=MAXBS/ns;ball.vx*=sc;ball.vy*=sc}}}
-    }
-  });
 }
 
-function draw(){
-  ctx.fillStyle='#0000FF';ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='#808080';ctx.fillRect(0,H-GH,W,GH);
-  // Goals
-  ctx.strokeStyle='#fff';ctx.lineWidth=3;
-  ctx.beginPath();ctx.moveTo(0,H-GH);ctx.lineTo(GW,H-GH);ctx.moveTo(GW/2,H-GH);ctx.lineTo(GW/2,H-GH-GOH);ctx.stroke();
-  ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,255,255,.8)';
-  for(var i=0;i<GW/2;i+=10){ctx.beginPath();ctx.moveTo(i,H-GH-GOH);ctx.lineTo(i,H-GH);ctx.stroke()}
-  for(var j=H-GH-GOH;j<=H-GH;j+=10){ctx.beginPath();ctx.moveTo(0,j);ctx.lineTo(GW/2,j);ctx.stroke()}
-  ctx.strokeStyle='#fff';ctx.lineWidth=3;
-  ctx.beginPath();ctx.moveTo(W-GW,H-GH);ctx.lineTo(W,H-GH);ctx.moveTo(W-GW/2,H-GH);ctx.lineTo(W-GW/2,H-GH-GOH);ctx.stroke();
-  ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,255,255,.8)';
-  for(var i2=W-GW/2;i2<=W;i2+=10){ctx.beginPath();ctx.moveTo(i2,H-GH-GOH);ctx.lineTo(i2,H-GH);ctx.stroke()}
-  for(var j2=H-GH-GOH;j2<=H-GH;j2+=10){ctx.beginPath();ctx.moveTo(W-GW/2,j2);ctx.lineTo(W,j2);ctx.stroke()}
-
-  // Left slime = Baptiste (with head image)
-  ctx.save();
-  ctx.beginPath();ctx.arc(L.x,L.y,SR,Math.PI,0);ctx.closePath();ctx.clip();
-  if(baptImg.complete&&baptImg.naturalWidth>0){
-    ctx.drawImage(baptImg,L.x-SR,L.y-SR,SR*2,SR*2);
-  }else{ctx.fillStyle='#00CED1';ctx.fill()}
-  ctx.restore();
-  ctx.beginPath();ctx.arc(L.x,L.y,SR,Math.PI,0);ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
-
-  // Right slime = Player (red)
-  ctx.fillStyle='#DC143C';ctx.beginPath();ctx.arc(R.x,R.y,SR,Math.PI,0);ctx.closePath();ctx.fill();
-  ctx.fillStyle='#8B0000';ctx.beginPath();ctx.arc(R.x,R.y,SR-5,Math.PI+0.3,Math.PI+0.7);ctx.arc(R.x,R.y,SR-15,Math.PI+0.7,Math.PI+0.3,true);ctx.closePath();ctx.fill();
-  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(R.x-SR*0.3,R.y-SR*0.3,5,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#000';ctx.beginPath();ctx.arc(R.x-SR*0.35,R.y-SR*0.3,2,0,Math.PI*2);ctx.fill();
-
-  // Ball
-  ctx.fillStyle='#FFD700';ctx.beginPath();ctx.arc(ball.x,ball.y,BR,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#B8860B';ctx.lineWidth=1;ctx.stroke();
-
-  // Score + Timer
-  ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='bold 24px "Cormorant Garamond",serif';ctx.textAlign='center';
-  ctx.fillText(scoreL+' - '+scoreR,W/2,30);
-  ctx.font='14px "Josefin Sans",sans-serif';
-  ctx.fillText('Baptiste',150,25);ctx.fillText('Vous',650,25);
-  var m=Math.floor(timer/60),s2=timer%60;
-  ctx.fillText((m<10?'0':'')+m+':'+(s2<10?'0':'')+s2,W/2,55);
+function aiMove(){
+  statusEl.textContent='Les mariés réfléchissent… 🤔';
+  setTimeout(function(){
+    var result=minimax(board,7,-Infinity,Infinity,true);
+    var col=result.col,row=getRow(board,col);
+    if(row===-1)return;
+    board[row][col]=ai;render();
+    highlightLast(row,col);
+    var w=checkWin(board,row,col);
+    if(w){showWin(w.cells);statusEl.textContent='😎 Les mariés gagnent ! Pas facile hein ?';resetBtn.style.display='inline-block';gameOver=true;return}
+    if(isFull(board)){statusEl.textContent='🤝 Match nul !';resetBtn.style.display='inline-block';gameOver=true;return}
+    currentPlayer=human;statusEl.textContent='À toi de jouer !';
+  },400);
 }
 
-function loop(){if(!gameOn)return;physics();draw();animId=requestAnimationFrame(loop)}
+function onCellClick(col){
+  if(gameOver||currentPlayer!==human)return;
+  var row=getRow(board,col);if(row===-1)return;
+  board[row][col]=human;render();
+  highlightLast(row,col);
+  var w=checkWin(board,row,col);
+  if(w){showWin(w.cells);statusEl.textContent='🎉 Bravo, tu as gagné !';resetBtn.style.display='inline-block';gameOver=true;return}
+  if(isFull(board)){statusEl.textContent='🤝 Match nul !';resetBtn.style.display='inline-block';gameOver=true;return}
+  currentPlayer=ai;aiMove();
+}
 
-window.slimeStartGame=function(dur){
-  scoreL=0;scoreR=0;timer=dur;gameOn=true;resetPos();
-  document.getElementById('slimeScore').textContent='';
-  if(timerInt)clearInterval(timerInt);
-  timerInt=setInterval(function(){
-    timer--;if(timer<=0){
-      gameOn=false;clearInterval(timerInt);if(animId)cancelAnimationFrame(animId);
-      var msg=scoreR>scoreL?'🎉 Victoire ! Vous avez battu Baptiste '+scoreR+'-'+scoreL+'!':scoreL>scoreR?'😎 Baptiste gagne '+scoreL+'-'+scoreR+'! Revanche ?':'🤝 Match nul '+scoreL+'-'+scoreR+'!';
-      document.getElementById('slimeScore').textContent=msg;
-      // Final screen
-      ctx.fillStyle='rgba(0,0,0,.6)';ctx.fillRect(0,0,W,H);
-      ctx.fillStyle='#fff';ctx.font='bold 28px "Cormorant Garamond",serif';ctx.textAlign='center';
-      ctx.fillText('Fin du match !',W/2,H/2-20);ctx.font='22px "Josefin Sans",sans-serif';ctx.fillText(scoreL+' - '+scoreR,W/2,H/2+15);
-    }
-  },1000);
-  loop();
-};
+function highlightLast(row,col){
+  var cells=boardEl.children;var idx=row*COLS+col;
+  for(var i=0;i<cells.length;i++)cells[i].classList.remove('last');
+  if(cells[idx])cells[idx].classList.add('last');
+}
 
-// Draw initial state
-ctx.fillStyle='#0000FF';ctx.fillRect(0,0,W,H);ctx.fillStyle='#808080';ctx.fillRect(0,H-GH,W,GH);
-ctx.fillStyle='rgba(255,255,255,.6)';ctx.font='bold 20px "Cormorant Garamond",serif';ctx.textAlign='center';
-ctx.fillText('⚽ Choisis la durée pour commencer !',W/2,H/2);
+function showWin(winCells){
+  var cells=boardEl.children;
+  for(var i=0;i<winCells.length;i++){var idx=winCells[i][0]*COLS+winCells[i][1];if(cells[idx])cells[idx].classList.add('win')}
+}
+
+window.c4Reset=function(){init()};
+init();
 })();
 </script>
 </body>
