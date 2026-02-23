@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anaïs & Baptiste — 20 Juin 2026</title>
+<meta property="og:title" content="Anaïs et Baptiste - 20 juin 2026 🤍">
+<meta property="og:description" content="Nous avons l'immense joie de vous inviter à notre mariage">
+<meta property="og:image" content="https://raw.githubusercontent.com/notremariage/A-B/main/images/Guiness.png">
+<meta property="og:type" content="website">
+<meta name="description" content="Anaïs et Baptiste - 20 juin 2026 🤍">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@300;400&family=Pinyon+Script&family=Great+Vibes&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -156,9 +161,9 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <section class="hero" id="top"><div class="hero-bg"></div>
 <div class="invitation-card reveal"><div class="invitation-card-bg"></div><div class="invitation-card-overlay"></div>
 <div class="card-ornament card-ornament-top">❧ ✿ ❧</div>
-<p class="card-we-invite">Nous avons la joie de vous inviter au mariage de</p>
 <h1 class="card-names">Anaïs<span class="card-ampersand">&amp;</span>Baptiste</h1>
 <p class="card-date-line">Le 20 Juin 2026</p>
+<p class="card-we-invite" style="margin-top:1.2rem;margin-bottom:0">Nous avons l'immense joie de vous inviter à notre mariage</p>
 <div class="card-ornament card-ornament-bottom">❧ ✿ ❧</div>
 </div><div class="hero-scroll"><span>Découvrir</span><div class="hero-scroll-line"></div></div></section>
 <div class="photo-single reveal"><img class="photo-single-img" src="https://raw.githubusercontent.com/notremariage/A-B/main/images/Bi%C3%A8res.jfif" alt="Bières" loading="lazy"></div>
@@ -203,7 +208,7 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <input type="text" name="Prénom" placeholder="Votre prénom" required>
 <input type="number" name="Nombre de personnes" placeholder="👥 Nombre de personnes" min="1" max="20" required>
 <input type="text" name="Animal totem" placeholder="🦁 Votre animal totem">
-<input type="number" name="Passages au buffet" placeholder="🍽️ Nombre de passages au buffet prévus" min="1" max="99">
+<input type="number" name="Passages au buffet" placeholder="🍽️ Nb de passages au buffet" min="1" max="99">
 <textarea name="Message" placeholder="💌 Un petit mot ? (optionnel)" rows="3"></textarea>
 <button type="submit" class="btn-rsvp" id="rsvpBtn"><span>Confirmer ma présence</span></button>
 </form><div class="rsvp-status" id="rsvpStatus"></div>
@@ -217,6 +222,13 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <div class="c4-board" id="c4Board"></div>
 <div class="c4-status" id="c4Status">Clique sur une colonne pour jouer !</div>
 <button class="btn-game" id="c4Reset" onclick="c4Reset()" style="display:none">Rejouer</button>
+</div>
+<!-- Victory overlay -->
+<div id="victoryOverlay" style="display:none;position:fixed;inset:0;z-index:99999;background:#000;flex-direction:column;align-items:center;justify-content:center;cursor:pointer" onclick="this.style.display='none'">
+<canvas id="fireworksCanvas" style="position:absolute;inset:0;z-index:1"></canvas>
+<img src="https://github.com/notremariage/A-B/blob/main/images/NY.jpg?raw=true" style="position:relative;z-index:2;max-width:85%;max-height:60vh;border-radius:16px;border:4px solid rgba(255,255,255,.3);box-shadow:0 0 60px rgba(255,200,0,.3)" crossorigin="anonymous">
+<p style="position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:#fff;text-align:center;margin-top:1.5rem;text-shadow:0 2px 20px rgba(0,0,0,.8);animation:fadeIn 1s ease .5s forwards;opacity:0">🎆 Whaooou tu es fin prêt !! 🎆</p>
+<p style="position:relative;z-index:2;font-size:.7rem;color:rgba(255,255,255,.4);margin-top:1rem;letter-spacing:2px">(touche pour fermer)</p>
 </div>
 </section></div>
 <footer><div class="footer-message">Nous avons hâte de partager cette journée magique avec vous.</div><div class="footer-ornament">❧ ✿ ❧</div><div class="footer-names">Anaïs &amp; Baptiste</div></footer>
@@ -377,7 +389,7 @@ function onCellClick(col){
   board[row][col]=human;render();
   highlightLast(row,col);
   var w=checkWin(board,row,col);
-  if(w){showWin(w.cells);statusEl.textContent='🎉 Bravo, tu as gagné !';resetBtn.style.display='inline-block';gameOver=true;return}
+  if(w){showWin(w.cells);statusEl.textContent='🎉 Bravo, tu as gagné !';resetBtn.style.display='inline-block';gameOver=true;launchVictory();return}
   if(isFull(board)){statusEl.textContent='🤝 Match nul !';resetBtn.style.display='inline-block';gameOver=true;return}
   currentPlayer=ai;aiMove();
 }
@@ -393,7 +405,29 @@ function showWin(winCells){
   for(var i=0;i<winCells.length;i++){var idx=winCells[i][0]*COLS+winCells[i][1];if(cells[idx])cells[idx].classList.add('win')}
 }
 
-window.c4Reset=function(){init()};
+window.c4Reset=function(){init();document.getElementById('victoryOverlay').style.display='none'};
+
+function launchVictory(){
+  var ov=document.getElementById('victoryOverlay');ov.style.display='flex';
+  var fc=document.getElementById('fireworksCanvas'),fctx=fc.getContext('2d');
+  fc.width=window.innerWidth;fc.height=window.innerHeight;
+  var particles=[],hue=0;
+  function Particle(x,y,h){this.x=x;this.y=y;this.ox=x;this.oy=y;
+    var a=Math.random()*Math.PI*2,s=Math.random()*6+2;
+    this.vx=Math.cos(a)*s;this.vy=Math.sin(a)*s;this.alpha=1;this.hue=h;this.decay=Math.random()*.02+.015;this.gravity=.04}
+  Particle.prototype.update=function(){this.vx*=.98;this.vy*=.98;this.vy+=this.gravity;this.x+=this.vx;this.y+=this.vy;this.alpha-=this.decay};
+  Particle.prototype.draw=function(){fctx.beginPath();fctx.arc(this.x,this.y,2,0,Math.PI*2);fctx.fillStyle='hsla('+this.hue+',100%,60%,'+this.alpha+')';fctx.fill()};
+  function explode(x,y){hue=Math.random()*360;for(var i=0;i<80;i++)particles.push(new Particle(x,y,hue+Math.random()*40))}
+  var fw=0;
+  function loop(){
+    if(ov.style.display==='none')return;
+    fctx.fillStyle='rgba(0,0,0,.15)';fctx.fillRect(0,0,fc.width,fc.height);
+    fw++;if(fw%20===0||fw<5)explode(Math.random()*fc.width*.8+fc.width*.1,Math.random()*fc.height*.4+fc.height*.1);
+    for(var i=particles.length-1;i>=0;i--){particles[i].update();particles[i].draw();if(particles[i].alpha<=0)particles.splice(i,1)}
+    if(fw<300)requestAnimationFrame(loop);
+  }
+  loop();
+}
 init();
 })();
 </script>
