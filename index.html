@@ -13,17 +13,14 @@ html{scroll-behavior:smooth}
 body{font-family:'Josefin Sans',sans-serif;font-weight:300;color:var(--text-dark);background:var(--linen-light);overflow-x:hidden;line-height:1.7}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--linen)}::-webkit-scrollbar-thumb{background:var(--sage-muted);border-radius:3px}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px}
-.floral-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-.floral-bg svg{position:absolute;opacity:.06}
+.floral-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}.floral-bg svg{position:absolute;opacity:.06}
 .floral-bg .lav-1{top:8%;left:2%;width:120px;height:200px;transform:rotate(-15deg)}.floral-bg .lav-2{top:35%;right:1%;width:100px;height:180px;transform:rotate(10deg)}.floral-bg .lav-3{bottom:25%;left:1%;width:110px;height:190px;transform:rotate(-8deg)}.floral-bg .lav-4{bottom:5%;right:3%;width:90px;height:160px;transform:rotate(20deg)}
-.floral-bg .butt-1{top:18%;right:5%;width:50px;height:50px}.floral-bg .butt-2{top:55%;left:4%;width:40px;height:40px}
 @media(max-width:768px){.floral-bg svg{opacity:.035}}
 .lav-side{position:absolute;pointer-events:none;z-index:0}.lav-side svg{width:45px;height:120px;opacity:.10}
 .lav-side-left{left:1rem;top:50%;transform:translateY(-50%) rotate(-5deg)}.lav-side-right{right:1rem;top:50%;transform:translateY(-50%) rotate(5deg) scaleX(-1)}
 @media(min-width:1000px){.lav-side svg{width:55px;height:140px;opacity:.12}.lav-side-left{left:2rem}.lav-side-right{right:2rem}}
 @media(max-width:600px){.lav-side svg{width:28px;height:75px;opacity:.07}.lav-side-left{left:.2rem}.lav-side-right{right:.2rem}}
-.petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
-.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:pFall linear infinite}
+.petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}.petal{position:absolute;border-radius:50% 0 50% 0;opacity:0;animation:pFall linear infinite}
 @keyframes pFall{0%{transform:translateY(-20px) rotate(0) translateX(0);opacity:0}8%{opacity:.3}92%{opacity:.2}100%{transform:translateY(100vh) rotate(360deg) translateX(60px);opacity:0}}
 @keyframes fadeIn{to{opacity:1}}
 @keyframes bFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(25px,-20px) scale(1.05)}66%{transform:translate(-20px,15px) scale(.96)}}
@@ -33,21 +30,18 @@ body{font-family:'Josefin Sans',sans-serif;font-weight:300;color:var(--text-dark
 @keyframes mBar{0%{height:4px}100%{height:16px}}
 #envelope-screen{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity 1.2s ease,visibility 1.2s ease;background:radial-gradient(ellipse at 20% 30%,rgba(126,155,110,.10) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(184,122,94,.06) 0%,transparent 50%),linear-gradient(165deg,#EDE5D8 0%,#F0EBE3 40%,#E8E0D4 100%)}
 #envelope-screen.opened{opacity:0;visibility:hidden;pointer-events:none}
-.env-blob{position:absolute;border-radius:50%;filter:blur(90px);animation:bFloat 10s ease-in-out infinite}
-.env-blob-1{width:350px;height:350px;background:rgba(126,155,110,.07);top:5%;left:5%}.env-blob-2{width:280px;height:280px;background:rgba(197,214,188,.08);bottom:10%;right:8%;animation-delay:-4s}
+.env-blob{position:absolute;border-radius:50%;filter:blur(90px);animation:bFloat 10s ease-in-out infinite}.env-blob-1{width:350px;height:350px;background:rgba(126,155,110,.07);top:5%;left:5%}.env-blob-2{width:280px;height:280px;background:rgba(197,214,188,.08);bottom:10%;right:8%;animation-delay:-4s}
 .env-prompt{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--text-light);margin-bottom:2.5rem;letter-spacing:1px;animation:fadeIn 1.5s ease .5s forwards;opacity:0}
-.env-gypso{position:absolute;opacity:.12;pointer-events:none}.env-gypso svg{width:150px;height:150px}
-.env-gypso-tl{top:1rem;left:1rem}.env-gypso-tr{top:1rem;right:1rem;transform:scaleX(-1)}.env-gypso-bl{bottom:1rem;left:1rem;transform:scaleY(-1)}.env-gypso-br{bottom:1rem;right:1rem;transform:scale(-1)}
+.env-gypso{position:absolute;opacity:.12;pointer-events:none}.env-gypso svg{width:150px;height:150px}.env-gypso-tl{top:1rem;left:1rem}.env-gypso-tr{top:1rem;right:1rem;transform:scaleX(-1)}.env-gypso-bl{bottom:1rem;left:1rem;transform:scaleY(-1)}.env-gypso-br{bottom:1rem;right:1rem;transform:scale(-1)}
 .envelope-wrapper{perspective:1600px;animation:fadeIn 1.2s ease forwards;opacity:0}
 .envelope{position:relative;width:440px;height:310px;transform-style:preserve-3d;transition:transform .3s ease}.envelope:hover{transform:translateY(-5px)}
-.env-body{position:absolute;inset:0;background:linear-gradient(145deg,#E8E0D4 0%,#DDD5C8 50%,#D2C9BB 100%);border-radius:8px;z-index:1;overflow:hidden;box-shadow:0 25px 70px rgba(106,91,74,.16),0 8px 25px rgba(106,91,74,.08)}
+.env-body{position:absolute;inset:0;background:linear-gradient(145deg,#E8E0D4 0%,#DDD5C8 50%,#D2C9BB 100%);border-radius:8px;z-index:1;overflow:hidden;box-shadow:0 25px 70px rgba(106,91,74,.16)}
 .env-body::before{content:'';position:absolute;inset:12px;border:1px solid rgba(126,155,110,.12);border-radius:4px;pointer-events:none}
-.env-flowers{position:absolute;inset:0;z-index:1;pointer-events:none}.env-flowers svg{position:absolute;opacity:.20}
-.env-flowers .fl-l{left:10px;bottom:10px;width:100px;height:130px}.env-flowers .fl-r{right:10px;bottom:10px;width:100px;height:130px;transform:scaleX(-1)}
+.env-flowers{position:absolute;inset:0;z-index:1;pointer-events:none}.env-flowers svg{position:absolute;opacity:.20}.env-flowers .fl-l{left:10px;bottom:10px;width:100px;height:130px}.env-flowers .fl-r{right:10px;bottom:10px;width:100px;height:130px;transform:scaleX(-1)}
 .env-seal{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);width:60px;height:60px;z-index:5;transition:transform .6s,opacity .6s}
 .env-seal-circle{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8FB37E,#6B8E5A 40%,#4E6E3E 100%);box-shadow:0 3px 14px rgba(78,110,62,.35);display:flex;align-items:center;justify-content:center;font-family:'Great Vibes',cursive;font-size:1.3rem;color:rgba(230,245,220,.9);clip-path:polygon(50% 0%,62% 3%,74% 1%,84% 9%,95% 14%,98% 27%,100% 41%,97% 54%,100% 67%,95% 79%,87% 89%,74% 96%,62% 100%,50% 97%,38% 100%,26% 96%,13% 89%,5% 79%,0% 67%,3% 54%,0% 41%,2% 27%,5% 14%,16% 9%,26% 1%,38% 3%)}
 .env-flap{position:absolute;top:0;left:0;right:0;height:118px;z-index:3;transform-origin:top center;transition:transform 1.1s cubic-bezier(.4,0,.2,1)}
-.env-flap-inner{width:0;height:0;border-left:220px solid transparent;border-right:220px solid transparent;border-top:118px solid #D9D0C3;filter:drop-shadow(0 2px 5px rgba(0,0,0,.05));position:relative}
+.env-flap-inner{width:0;height:0;border-left:220px solid transparent;border-right:220px solid transparent;border-top:118px solid #D9D0C3;position:relative}
 .env-flap-inner::after{content:'';position:absolute;top:-116px;left:-215px;border-left:215px solid transparent;border-right:215px solid transparent;border-top:114px solid #E2D9CC}
 .env-card{position:absolute;top:68px;left:22px;right:22px;bottom:22px;background:linear-gradient(135deg,var(--white),var(--ivory));border-radius:5px;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform 1.1s cubic-bezier(.4,0,.2,1) .3s}
 .env-card-names{font-family:'Pinyon Script',cursive;font-size:1.8rem;color:var(--sage-dark);text-align:center}
@@ -65,8 +59,7 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .section-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--text-dark);margin-bottom:.5rem}
 .divider{display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem 0;margin-bottom:1.5rem}
 .divider-line{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--sage-pale),transparent)}.divider-icon{color:var(--sage-muted);font-size:.9rem;opacity:.6}
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}
 .section-wide{position:relative;max-width:none;overflow:hidden}
 .hero{position:relative;min-height:100vh;max-width:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse at 20% 80%,rgba(126,155,110,.10) 0%,transparent 50%),var(--linen-light)}
@@ -85,14 +78,12 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .hero-scroll span{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light)}
 .hero-scroll-line{width:1px;height:35px;background:linear-gradient(to bottom,var(--sage-light),transparent);animation:scrollP 2.5s ease-in-out infinite}
 .photo-single{max-width:none;padding:2rem;display:flex;justify-content:center}
-.photo-single-img{width:340px;height:230px;object-fit:cover;border-radius:12px;box-shadow:0 10px 35px rgba(106,91,74,.10);border:4px solid var(--white);transition:transform .5s}
-.photo-single-img:hover{transform:scale(1.03) rotate(-1deg)}
+.photo-single-img{width:340px;height:230px;object-fit:cover;border-radius:12px;box-shadow:0 10px 35px rgba(106,91,74,.10);border:4px solid var(--white);transition:transform .5s}.photo-single-img:hover{transform:scale(1.03) rotate(-1deg)}
 @media(max-width:500px){.photo-single-img{width:85%;max-width:300px;height:auto;aspect-ratio:4/3}}
 .countdown-section{background:radial-gradient(ellipse at 50% 0%,rgba(126,155,110,.05) 0%,transparent 60%),var(--ivory);max-width:none;padding:5rem 2rem}
 .countdown-grid{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;max-width:600px;margin:0 auto}
 .countdown-item{background:var(--white);border:1px solid rgba(126,155,110,.10);border-radius:14px;padding:1.5rem 1rem;min-width:110px;box-shadow:0 4px 20px rgba(106,91,74,.04);transition:transform .3s}.countdown-item:hover{transform:translateY(-3px)}
-.countdown-number{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--sage-dark);line-height:1}
-.countdown-label{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-top:.4rem;display:block}
+.countdown-number{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--sage-dark);line-height:1}.countdown-label{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-top:.4rem;display:block}
 @media(max-width:500px){.countdown-grid{gap:.8rem}.countdown-item{min-width:70px;padding:1rem .6rem}.countdown-number{font-size:2.2rem}}
 .programme-section{background:var(--linen-light);max-width:none;padding:5rem 2rem}
 .programme-timeline{max-width:550px;margin:0 auto;position:relative}
@@ -100,8 +91,8 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .programme-event{position:relative;padding:2rem 0}
 .programme-event::before{content:'';position:absolute;left:50%;top:2.3rem;width:10px;height:10px;border-radius:50%;background:var(--sage);transform:translateX(-50%);box-shadow:0 0 0 4px var(--linen-light),0 0 0 5px var(--sage-pale);z-index:2}
 .programme-time{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--sage-dark)}.programme-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--text-dark);margin-bottom:.5rem}.programme-location{font-size:.85rem;color:var(--text-medium);line-height:1.7}.programme-icon{font-size:1.8rem;margin-bottom:.8rem;opacity:.5}
-.dresscode-section{background:radial-gradient(ellipse at 60% 50%,rgba(197,214,188,.06) 0%,transparent 50%),var(--ivory);max-width:none;padding:5rem 2rem}
-.dresscode-content{max-width:520px;margin:0 auto}.dresscode-tag{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--sage);border:1px solid var(--sage-pale);border-radius:30px;padding:.6rem 2rem;margin-bottom:1.5rem}
+.dresscode-section{background:var(--ivory);max-width:none;padding:5rem 2rem}
+.dresscode-content{max-width:520px;margin:0 auto}.dresscode-tag{display:inline-block;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--sage);border:1px solid var(--sage-pale);border-radius:30px;padding:.6rem 2rem;margin-bottom:1.5rem}
 .dresscode-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text-medium);line-height:1.9}
 .dresscode-colors{display:flex;justify-content:center;gap:.8rem;margin-top:2rem}.color-dot{width:30px;height:30px;border-radius:50%;border:2px solid rgba(255,255,255,.8);box-shadow:0 2px 8px rgba(0,0,0,.07);transition:transform .3s}.color-dot:hover{transform:scale(1.2)}
 .cadeau-section{background:var(--linen-light);max-width:none;padding:5rem 2rem}.cadeau-content{max-width:550px;margin:0 auto}.cadeau-text{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--text-medium);line-height:1.9}.cadeau-icon{font-size:2.5rem;margin-bottom:1rem;opacity:.5}
@@ -111,15 +102,15 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .rsvp-form{display:flex;flex-direction:column;gap:1rem}
 .rsvp-form input,.rsvp-form textarea{font-family:'Josefin Sans',sans-serif;font-size:.85rem;font-weight:300;color:var(--text-dark);background:var(--ivory);border:1px solid var(--linen-dark);border-radius:10px;padding:.9rem 1.3rem;outline:none;resize:none;transition:border-color .3s}
 .rsvp-form input:focus,.rsvp-form textarea:focus{border-color:var(--sage-light);box-shadow:0 0 0 3px rgba(126,155,110,.08);background:var(--white)}
-.rsvp-form textarea{min-height:80px}
-.rsvp-form input::placeholder,.rsvp-form textarea::placeholder{color:var(--text-light)}
+.rsvp-form textarea{min-height:80px}.rsvp-form input::placeholder,.rsvp-form textarea::placeholder{color:var(--text-light)}
 .btn-rsvp{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:4px;text-transform:uppercase;border:none;cursor:pointer;background:linear-gradient(135deg,var(--sage),var(--sage-dark));color:var(--white);border-radius:30px;padding:1rem 2.5rem;margin-top:.5rem;transition:all .4s;position:relative;overflow:hidden}
 .btn-rsvp::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--terracotta),var(--brown-warm));opacity:0;transition:opacity .4s;border-radius:30px}.btn-rsvp span{position:relative;z-index:1}.btn-rsvp:hover::before{opacity:1}.btn-rsvp:hover{transform:translateY(-2px)}.btn-rsvp:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .rsvp-status{margin-top:1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;text-align:center;display:none}.rsvp-status.success{display:block;color:var(--sage-dark)}.rsvp-status.error{display:block;color:var(--terracotta)}
 .game-section{background:var(--linen-light);max-width:none;padding:4rem 2rem;text-align:center}
-#gameCanvas{border-radius:12px;box-shadow:0 8px 30px rgba(106,91,74,.12);border:3px solid var(--sage-pale);display:block;margin:1.5rem auto 0;cursor:none;touch-action:none;background:#2d5a1b}
-.game-info{font-family:'Caveat',cursive;font-size:1.1rem;color:var(--text-medium);margin-top:1rem}
-.btn-game{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;border:1px solid var(--sage);background:transparent;color:var(--sage);border-radius:25px;padding:.7rem 2rem;cursor:pointer;transition:all .3s;margin-top:1rem}.btn-game:hover{background:var(--sage);color:var(--white)}
+#slimeGame{max-width:800px;margin:1.5rem auto 0;border-radius:8px;box-shadow:0 8px 30px rgba(106,91,74,.12);border:3px solid var(--sage-pale);display:block}
+.game-controls-info{font-family:'Caveat',cursive;font-size:1rem;color:var(--text-medium);margin-top:1rem;line-height:1.6}
+.btn-game{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;border:1px solid var(--sage);background:transparent;color:var(--sage);border-radius:25px;padding:.7rem 2rem;cursor:pointer;transition:all .3s;margin:.5rem}.btn-game:hover{background:var(--sage);color:var(--white)}.btn-game.active{background:var(--sage);color:var(--white)}
+.game-score-display{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-top:.8rem;color:var(--text-dark)}
 footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;padding:4rem 2rem;position:relative}
 .footer-message{position:relative;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;max-width:480px;margin:0 auto;line-height:1.9}
 .footer-ornament{position:relative;margin:2rem 0 1.5rem;opacity:.2;letter-spacing:1rem;color:var(--sage-pale)}
@@ -133,8 +124,6 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <svg class="lav-2" viewBox="0 0 60 120"><line x1="30" y1="120" x2="30" y2="20" stroke="#8FA882" stroke-width="1.2" opacity=".6"/><ellipse cx="30" cy="18" rx="4" ry="6" fill="#9B8EC4" opacity=".5"/><ellipse cx="30" cy="28" rx="4.5" ry="6" fill="#A998CB" opacity=".45"/></svg>
 <svg class="lav-3" viewBox="0 0 60 120"><line x1="30" y1="120" x2="28" y2="22" stroke="#8FA882" stroke-width="1.2" opacity=".6"/><ellipse cx="28" cy="20" rx="4" ry="6" fill="#9B8EC4" opacity=".5"/><ellipse cx="28" cy="30" rx="4.5" ry="6" fill="#A998CB" opacity=".45"/></svg>
 <svg class="lav-4" viewBox="0 0 60 120"><line x1="30" y1="120" x2="32" y2="25" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="32" cy="22" rx="3.5" ry="5.5" fill="#9B8EC4" opacity=".45"/></svg>
-<svg class="butt-1" viewBox="0 0 40 40"><circle cx="20" cy="20" r="4" fill="#fff" opacity=".5"/><ellipse cx="20" cy="12" rx="4" ry="5" fill="#fff" opacity=".35"/><ellipse cx="20" cy="28" rx="4" ry="5" fill="#fff" opacity=".35"/><ellipse cx="12" cy="20" rx="5" ry="4" fill="#fff" opacity=".35"/><ellipse cx="28" cy="20" rx="5" ry="4" fill="#fff" opacity=".35"/></svg>
-<svg class="butt-2" viewBox="0 0 40 40"><circle cx="20" cy="20" r="4" fill="#fff" opacity=".5"/><ellipse cx="20" cy="12" rx="4" ry="5" fill="#fff" opacity=".35"/><ellipse cx="20" cy="28" rx="4" ry="5" fill="#fff" opacity=".35"/><ellipse cx="12" cy="20" rx="5" ry="4" fill="#fff" opacity=".35"/><ellipse cx="28" cy="20" rx="5" ry="4" fill="#fff" opacity=".35"/></svg>
 </div>
 <div id="envelope-screen"><div class="env-blob env-blob-1"></div><div class="env-blob env-blob-2"></div>
 <div class="env-gypso env-gypso-tl"><svg viewBox="0 0 140 140"><line x1="10" y1="130" x2="55" y2="60" stroke="#7E9B6E" stroke-width=".7" opacity=".4"/><line x1="55" y1="60" x2="90" y2="15" stroke="#7E9B6E" stroke-width=".5" opacity=".3"/><circle cx="90" cy="15" r="4.5" fill="#fff" opacity=".7"/><circle cx="55" cy="60" r="3.5" fill="#fff" opacity=".6"/></svg></div>
@@ -147,15 +136,15 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <svg class="fl-l" viewBox="0 0 100 130"><line x1="50" y1="130" x2="30" y2="60" stroke="#8FA882" stroke-width=".8" opacity=".5"/><line x1="30" y1="60" x2="8" y2="15" stroke="#8FA882" stroke-width=".5" opacity=".3"/><circle cx="8" cy="15" r="5" fill="#fff" opacity=".65"/><circle cx="30" cy="60" r="4" fill="#fff" opacity=".55"/></svg>
 <svg class="fl-r" viewBox="0 0 100 130"><line x1="50" y1="130" x2="30" y2="60" stroke="#8FA882" stroke-width=".8" opacity=".5"/><line x1="30" y1="60" x2="8" y2="15" stroke="#8FA882" stroke-width=".5" opacity=".3"/><circle cx="8" cy="15" r="5" fill="#fff" opacity=".65"/><circle cx="30" cy="60" r="4" fill="#fff" opacity=".55"/></svg>
 </div></div>
-<div class="env-card"><div class="env-card-names">Anaïs & Baptiste</div><div class="env-card-date">20 Juin 2026</div></div>
+<div class="env-card"><div class="env-card-names">Anaïs &amp; Baptiste</div><div class="env-card-date">20 Juin 2026</div></div>
 <div class="env-flap"><div class="env-flap-inner"></div></div>
-<div class="env-seal"><div class="env-seal-circle">A&B</div></div>
+<div class="env-seal"><div class="env-seal-circle">A&amp;B</div></div>
 </div></div>
 <p class="env-cta">Touchez pour ouvrir</p>
 </div>
 <button class="music-toggle" id="musicToggle" aria-label="Musique"><div class="music-bars" id="musicBars"><span></span><span></span><span></span><span></span></div></button>
 <div id="invitation">
-<section class="hero"><div class="hero-bg"></div>
+<section class="hero" id="top"><div class="hero-bg"></div>
 <div class="invitation-card reveal"><div class="invitation-card-bg"></div><div class="invitation-card-overlay"></div>
 <div class="card-ornament card-ornament-top">❧ ✿ ❧</div>
 <p class="card-we-invite">Nous avons la joie de vous inviter au mariage de</p>
@@ -163,9 +152,7 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <p class="card-date-line">Le 20 Juin 2026</p>
 <div class="card-ornament card-ornament-bottom">❧ ✿ ❧</div>
 </div><div class="hero-scroll"><span>Découvrir</span><div class="hero-scroll-line"></div></div></section>
-
 <div class="photo-single reveal"><img class="photo-single-img" src="https://raw.githubusercontent.com/notremariage/A-B/main/images/Bi%C3%A8res.jfif" alt="Bières" loading="lazy"></div>
-
 <div class="section-wide countdown-section"><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">Il ne reste plus que</p><h2 class="section-title">Compte à Rebours</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
@@ -175,9 +162,7 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <div class="countdown-item"><span class="countdown-number" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
 <div class="countdown-item"><span class="countdown-number" id="cd-secs">--</span><span class="countdown-label">Secondes</span></div>
 </div></section></div>
-
 <div class="photo-single reveal"><img class="photo-single-img" src="https://raw.githubusercontent.com/notremariage/A-B/main/images/lombok.png" alt="Lombok" loading="lazy"></div>
-
 <div class="section-wide programme-section"><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">Déroulement de la journée</p><h2 class="section-title">Le Programme</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
@@ -185,9 +170,7 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <div class="programme-event reveal reveal-d1"><div class="programme-icon">⛪</div><div class="programme-time">14 h 00</div><h3 class="programme-title">La Cérémonie</h3><p class="programme-location">Chapelle Sainte-Thérèse<br>Aux Mayens de la Zour</p></div>
 <div class="programme-event reveal reveal-d2"><div class="programme-icon">🥂</div><div class="programme-time">Soirée</div><h3 class="programme-title">Les Festivités</h3><p class="programme-location">La Grange Rouge — Martigny<br><em>Jusqu'au bout de la nuit ✨</em></p></div>
 </div></section></div>
-
 <div class="photo-single reveal"><img class="photo-single-img" src="https://raw.githubusercontent.com/notremariage/A-B/main/images/surf.png" alt="Surf" loading="lazy"></div>
-
 <div class="section-wide dresscode-section"><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">Comment venir</p><h2 class="section-title">Dress Code</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
@@ -195,251 +178,258 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <p class="dresscode-text">Nous vous invitons à venir dans une tenue élégante pour partager cette belle journée avec nous.<br><br>Laissez-vous inspirer par des tons doux et naturels — beige, vert sauge, ivoire, terracotta, rose poudré…</p>
 <div class="dresscode-colors"><div class="color-dot" style="background:#E8DDD2"></div><div class="color-dot" style="background:#8A9A7B"></div><div class="color-dot" style="background:#F5F0EB"></div><div class="color-dot" style="background:#B87A5E"></div><div class="color-dot" style="background:#D4A7A0"></div></div>
 </div></section></div>
-
-<div class="photo-single reveal"><img class="photo-single-img" src="https://raw.githubusercontent.com/notremariage/A-B/main/images/Guiness.png" alt="Guinness" loading="lazy"></div>
-
+<div class="photo-single reveal"><img class="photo-single-img" src="https://github.com/notremariage/A-B/blob/main/images/coree1.jpg?raw=true" alt="Corée" loading="lazy"></div>
 <div class="section-wide cadeau-section"><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">Voyage de lune de miel</p><h2 class="section-title">Cadeau</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
 <div class="cadeau-content reveal reveal-d1"><div class="cadeau-icon">🌙</div><p class="cadeau-text">Pour contribuer à notre voyage de lune de miel, une jolie boîte sera à votre disposition sur place où vous pourrez déposer votre enveloppe.</p></div>
 </section></div>
-
 <div class="section-wide rsvp-section" id="rsvp"><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">On compte sur vous</p><h2 class="section-title">Confirmation de Présence</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
 <div class="rsvp-card reveal reveal-d1">
-<form class="rsvp-form" id="rsvpForm" action="https://formsubmit.co/baptiste.mouthon@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="Nouvelle confirmation de présence - Mariage A&B">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_next" value="">
+<form class="rsvp-form" id="rsvpForm">
+<input type="hidden" name="_subject" value="Nouvelle confirmation - Mariage A&amp;B">
 <input type="text" name="Nom" placeholder="Votre nom" required>
 <input type="text" name="Prénom" placeholder="Votre prénom" required>
 <textarea name="Message" placeholder="Un petit mot ? (optionnel)" rows="3"></textarea>
 <button type="submit" class="btn-rsvp" id="rsvpBtn"><span>Confirmer ma présence</span></button>
-</form>
-<div class="rsvp-status" id="rsvpStatus"></div>
+</form><div class="rsvp-status" id="rsvpStatus"></div>
 </div></section></div>
-
 <div class="section-wide game-section">
 <section><div class="reveal"><p class="section-label">Un petit défi ?</p><h2 class="section-title">⚽ Défie le Marié !</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
-<p class="game-info reveal">Viens défier Baptiste ! Petit jeu d'une minute — sa tête contre ta souris 🎮</p>
-<canvas id="gameCanvas" width="450" height="600" class="reveal reveal-d1"></canvas>
-<p class="game-info" id="gameScore"></p>
-<button class="btn-game reveal" id="gameStartBtn" onclick="startGame()">Lancer le match</button>
+<p class="game-controls-info reveal">Viens défier Baptiste au Slime Soccer !<br>Flèches ← → pour bouger, ↑ pour sauter, ↓ pour attraper</p>
+<div class="reveal reveal-d1">
+<button class="btn-game" onclick="slimeStartGame(60)">1 Minute</button>
+<button class="btn-game" onclick="slimeStartGame(120)">2 Minutes</button>
+</div>
+<canvas id="slimeGame" width="800" height="400" class="reveal reveal-d2" style="max-width:100%;height:auto"></canvas>
+<div class="game-score-display" id="slimeScore"></div>
 </section></div>
-
 <footer><div class="footer-message">Nous avons hâte de partager cette journée magique avec vous.</div><div class="footer-ornament">❧ ✿ ❧</div><div class="footer-names">Anaïs &amp; Baptiste</div></footer>
 </div>
 <script>
-// PETALS
+// === PETALS ===
 !function(){var c=document.getElementById('petals'),cols=['#C5D6BC','#98B388','#8FA882','#D6CCBE','#CFA08A'];for(var i=0;i<18;i++){var p=document.createElement('div');p.classList.add('petal');p.style.left=Math.random()*100+'%';p.style.animationDuration=(9+Math.random()*14)+'s';p.style.animationDelay=(Math.random()*18)+'s';p.style.background=cols[Math.floor(Math.random()*cols.length)];var s=3+Math.random()*7;p.style.width=s+'px';p.style.height=s+'px';c.appendChild(p)}}();
 
-// ENVELOPE + MUSIC
+// === ENVELOPE + scroll to top ===
 var envScreen=document.getElementById('envelope-screen'),envelope=document.getElementById('envelope'),invitation=document.getElementById('invitation'),musicToggle=document.getElementById('musicToggle'),musicBars=document.getElementById('musicBars');
 var musicPlaying=false,audio=null;
 document.body.style.overflow='hidden';
-envScreen.addEventListener('click',function h(){startMusic();envelope.classList.add('open');setTimeout(function(){envScreen.classList.add('opened');document.body.style.overflow='auto';setTimeout(function(){invitation.classList.add('revealed');musicToggle.classList.add('active')},300)},1300);envScreen.removeEventListener('click',h)});
+envScreen.addEventListener('click',function h(){
+  window.scrollTo(0,0);
+  startMusic();envelope.classList.add('open');
+  setTimeout(function(){envScreen.classList.add('opened');document.body.style.overflow='auto';
+    window.scrollTo({top:0,behavior:'instant'});
+    setTimeout(function(){invitation.classList.add('revealed');musicToggle.classList.add('active')},300)
+  },1300);envScreen.removeEventListener('click',h)
+});
 function startMusic(){var urls=['music.mp3','https://notremariage.github.io/A-B/music.mp3','https://github.com/notremariage/A-B/raw/main/music.mp3'];tryN(0);function tryN(i){if(i>=urls.length)return;audio=new Audio(urls[i]);audio.loop=true;audio.volume=0.35;audio.addEventListener('error',function(){tryN(i+1)},{once:true});var p=audio.play();if(p)p.then(function(){musicPlaying=true;musicBars.classList.add('playing')}).catch(function(){})}}
 musicToggle.addEventListener('click',function(){if(!audio){startMusic();return}if(musicPlaying){audio.pause();musicPlaying=false;musicBars.classList.remove('playing')}else{audio.play();musicPlaying=true;musicBars.classList.add('playing')}});
 
-// COUNTDOWN
+// === COUNTDOWN ===
 var wD=new Date('2026-06-20T14:00:00+02:00');
 function uCD(){var d=wD-new Date();if(d<=0)return;document.getElementById('cd-days').textContent=Math.floor(d/864e5);document.getElementById('cd-hours').textContent=String(Math.floor((d%864e5)/36e5)).padStart(2,'0');document.getElementById('cd-mins').textContent=String(Math.floor((d%36e5)/6e4)).padStart(2,'0');document.getElementById('cd-secs').textContent=String(Math.floor((d%6e4)/1e3)).padStart(2,'0')}uCD();setInterval(uCD,1000);
 
-// SCROLL REVEAL
-var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+// === SCROLL REVEAL ===
+var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
 
-// RSVP — FormSubmit handles sending to baptiste.mouthon@gmail.com
-// The form uses action= attribute so it submits directly.
-// We intercept to show nice feedback:
+// === RSVP via FormSubmit ===
 document.getElementById('rsvpForm').addEventListener('submit',function(e){
-  var form=e.target,status=document.getElementById('rsvpStatus'),btn=document.getElementById('rsvpBtn');
-  // Let FormSubmit handle the POST but show feedback via fetch
-  e.preventDefault();
-  var fd=new FormData(form);
-  status.className='rsvp-status';status.style.display='block';status.style.color='var(--text-light)';status.textContent='Envoi en cours…';btn.disabled=true;
+  e.preventDefault();var form=e.target,status=document.getElementById('rsvpStatus'),btn=document.getElementById('rsvpBtn');
+  var fd=new FormData(form);status.style.display='block';status.className='rsvp-status';status.style.color='var(--text-light)';status.textContent='Envoi en cours…';btn.disabled=true;
   fetch('https://formsubmit.co/ajax/baptiste.mouthon@gmail.com',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
-  .then(function(r){return r.json()})
-  .then(function(data){
+  .then(function(r){return r.json()}).then(function(data){
     if(data.success){form.style.display='none';status.className='rsvp-status success';status.innerHTML='Merci pour ta réponse 💛<br>On se réjouit de te voir !';}
     else{status.className='rsvp-status error';status.textContent='Erreur. Réessayez !';btn.disabled=false}
   }).catch(function(){status.className='rsvp-status error';status.textContent='Erreur réseau. Réessayez !';btn.disabled=false});
 });
 
-// ═══════ SLIM SOCCER GAME ═══════
-var canvas=document.getElementById('gameCanvas'),ctx=canvas.getContext('2d');
-var W=canvas.width,H=canvas.height;
-var gameRunning=false,gameTimer=60,gameInterval=null,animFrame=null;
-var playerScore=0,aiScore=0;
-var baptisteImg=new Image();
-baptisteImg.crossOrigin='anonymous';
-baptisteImg.src='https://github.com/notremariage/A-B/blob/main/images/20240610_183422.png?raw=true';
+// ══════════════════════════════════
+// ===   SLIME SOCCER GAME       ===
+// ══════════════════════════════════
+(function(){
+var canvas=document.getElementById('slimeGame'),ctx=canvas.getContext('2d');
+var W=800,H=400,GH=80,SR=40,BR=10,GW=80,GOH=120;
+var GRAV=0.6,SPD=5,JUMP=-12,BDAMP=0.99,BBOUNCE=0.8,MAXBS=13;
+var keys={},gameOn=false,timer=0,timerInt=null,animId=null;
+var baptImg=new Image();baptImg.crossOrigin='anonymous';
+baptImg.src='https://github.com/notremariage/A-B/blob/main/images/20240610_183422.png?raw=true';
 
-// Ball
-var ball={x:W/2,y:H/2,r:12,vx:3,vy:3,speed:4};
-// Paddles (heads)
-var playerPaddle={x:W/2,y:H-40,w:60,h:60};
-var aiPaddle={x:W/2,y:40,w:60,h:60};
-// Goals
-var goalW=140,goalH=10;
-// Mouse/touch
-var mouseX=W/2;
+var L,R,ball;
+function initState(){
+  L={x:200,y:H-GH,vx:0,vy:0,grab:false,hasBall:false,glt:0,tgtX:200,cd:0,stable:true,stuckC:0,lastBY:150};
+  R={x:600,y:H-GH,vx:0,vy:0,grab:false,hasBall:false,glt:0};
+  ball={x:W/2,y:150,vx:0,vy:0,grabbed:null,gAngle:0,gAV:0};
+}
+initState();
 
-canvas.addEventListener('mousemove',function(e){var r=canvas.getBoundingClientRect();mouseX=((e.clientX-r.left)/r.width)*W});
-canvas.addEventListener('touchmove',function(e){e.preventDefault();var r=canvas.getBoundingClientRect();mouseX=((e.touches[0].clientX-r.left)/r.width)*W},{passive:false});
+window.addEventListener('keydown',function(e){
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  var k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright'].indexOf(k)>=0)e.preventDefault();keys[k]=true;
+});
+window.addEventListener('keyup',function(e){keys[e.key.toLowerCase()]=false});
 
-function drawField(){
-  // Green field
-  ctx.fillStyle='#2d5a1b';ctx.fillRect(0,0,W,H);
-  // Center line
-  ctx.strokeStyle='rgba(255,255,255,.2)';ctx.lineWidth=2;ctx.setLineDash([8,6]);
-  ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();ctx.setLineDash([]);
-  // Center circle
-  ctx.beginPath();ctx.arc(W/2,H/2,50,0,Math.PI*2);ctx.stroke();
-  // Goals
-  ctx.fillStyle='rgba(255,255,255,.15)';
-  ctx.fillRect((W-goalW)/2,0,goalW,goalH);
-  ctx.fillRect((W-goalW)/2,H-goalH,goalW,goalH);
-  // Goal posts
-  ctx.fillStyle='#fff';
-  ctx.fillRect((W-goalW)/2-3,0,3,goalH+15);ctx.fillRect((W+goalW)/2,0,3,goalH+15);
-  ctx.fillRect((W-goalW)/2-3,H-goalH-15,3,goalH+15);ctx.fillRect((W+goalW)/2,H-goalH-15,3,goalH+15);
+function resetPos(){
+  L.x=200;L.y=H-GH;L.vx=0;L.vy=0;L.grab=false;L.hasBall=false;L.glt=0;L.tgtX=200;L.cd=0;L.stable=true;L.stuckC=0;
+  R.x=600;R.y=H-GH;R.vx=0;R.vy=0;R.grab=false;R.hasBall=false;R.glt=0;
+  ball.x=W/2;ball.y=150;ball.vx=0;ball.vy=0;ball.grabbed=null;ball.gAngle=0;ball.gAV=0;
 }
 
-function drawBall(){
-  ctx.beginPath();ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
-  ctx.fillStyle='#fff';ctx.fill();
-  ctx.strokeStyle='#333';ctx.lineWidth=1;ctx.stroke();
-  // Pentagon pattern
-  ctx.beginPath();ctx.arc(ball.x,ball.y,ball.r*.5,0,Math.PI*2);
-  ctx.fillStyle='#333';ctx.fill();
-}
+var scoreL=0,scoreR=0;
 
-function drawPaddle(p,isAI){
-  if(isAI && baptisteImg.complete && baptisteImg.naturalWidth>0){
-    ctx.save();
-    ctx.beginPath();ctx.arc(p.x,p.y,p.w/2,0,Math.PI*2);ctx.clip();
-    ctx.drawImage(baptisteImg,p.x-p.w/2,p.y-p.h/2,p.w,p.h);
-    ctx.restore();
-    ctx.beginPath();ctx.arc(p.x,p.y,p.w/2,0,Math.PI*2);ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.stroke();
+// AI for Baptiste (left slime)
+function updateAI(){
+  var ai=L,b=ball;
+  if(ai.cd>0){ai.cd--;var df=ai.tgtX-ai.x;if(Math.abs(df)>10)ai.vx=Math.sign(df)*SPD*Math.min(Math.abs(df)/50,1);else ai.vx=0;return}
+  if(ai.stable&&timer>55){ai.tgtX=200;ai.vx=0;if(Math.abs(b.x-ai.x)<150||timer<=55)ai.stable=false;return}
+
+  var ballStuck=Math.abs(b.y-ai.lastBY)<5&&Math.abs(b.vx)<2;ai.stuckC=ballStuck?ai.stuckC+1:0;ai.lastBY=b.y;
+  var newTgt=ai.tgtX,jump=false,grab=false,ms=SPD;
+  var bDist=Math.abs(ai.x-b.x),bH=H-GH-b.y;
+
+  // Predict ball
+  var pX=b.x,pY=b.y,pVx=b.vx,pVy=b.vy,preds=[];
+  for(var t=0;t<80;t++){pVy+=GRAV;pVx*=BDAMP;pX+=pVx;pY+=pVy;if(pX<BR){pX=BR;pVx*=-BBOUNCE}if(pX>W-BR){pX=W-BR;pVx*=-BBOUNCE}preds.push({x:pX,y:pY,t:t});if(pY>H-GH-BR)break}
+
+  if(b.x>W*0.35||Math.abs(b.x-W+GW/2)<Math.abs(b.x-GW/2)*1.5){
+    // Attack
+    if(bH>60&&bDist<150)newTgt=b.x-45;else if(bH<30&&bDist<100)newTgt=b.x-20;else newTgt=b.x-30;
+    ms=SPD*1.1;
+    if(bDist<100){
+      if(ai.stuckC>30){jump=true;newTgt=b.x-40}
+      else if(bH<35&&bDist<60&&!ai.hasBall&&b.vy>-2)grab=true;
+      else if(bH>30&&bH<90&&ai.y>=H-GH-1)jump=true;
+    }
+    if(ai.hasBall&&(ai.x>W*0.7))grab=false;
   } else {
-    ctx.beginPath();ctx.arc(p.x,p.y,p.w/2,0,Math.PI*2);
-    ctx.fillStyle=isAI?'var(--sage)':'var(--terracotta)';ctx.fill();
-    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
-    ctx.fillStyle='#fff';ctx.font='bold 14px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(isAI?'B':'🏆',p.x,p.y);
+    // Defend
+    var best=b.x;
+    for(var i=0;i<preds.length;i++){if(preds[i].x<W*0.4){var ttR=Math.abs(ai.x-preds[i].x)/(SPD*1.2);if(ttR<=preds[i].t+5){best=preds[i].x;break}}}
+    newTgt=best;
+    if(b.x<GW*2.5&&b.vx<-1){newTgt=Math.max(b.x-10,SR);ms=SPD*1.2;if(bDist<120&&bH<100)jump=true}
+    if(ai.stuckC>20&&b.x<W*0.3){jump=true;newTgt=b.x+30}
   }
-  if(!isAI){
-    ctx.beginPath();ctx.arc(p.x,p.y,p.w/2,0,Math.PI*2);
-    ctx.fillStyle='rgba(184,122,94,.3)';ctx.fill();
-    ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
-    ctx.fillStyle='#fff';ctx.font='bold 16px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('👆',p.x,p.y);
+  if(Math.abs(newTgt-ai.tgtX)>15){ai.tgtX=newTgt;ai.cd=10}
+  if(grab&&!ai.grab&&ai.y>=H-GH-1)ai.grab=true;else if(!grab)ai.grab=false;
+  var df2=ai.tgtX-ai.x;if(Math.abs(df2)>10)ai.vx=Math.sign(df2)*ms*Math.min(Math.abs(df2)/50,1);else ai.vx=0;
+  if(jump&&ai.vy===0&&!ai.grab)ai.vy=JUMP;
+}
+
+function physics(){
+  // Human controls right slime
+  if(keys['arrowleft'])R.vx=-SPD;else if(keys['arrowright'])R.vx=SPD;else R.vx=0;
+  if(keys['arrowup']&&R.y>=H-GH-1&&!R.grab)R.vy=JUMP;
+  R.grab=!!keys['arrowdown'];
+  updateAI();
+
+  [L,R].forEach(function(s,idx){
+    s.vy+=GRAV;s.x+=s.vx;s.y+=s.vy;
+    if(s.x<SR)s.x=SR;if(s.x>W-SR)s.x=W-SR;
+    if(s.y>H-GH){s.y=H-GH;s.vy=0}
+    var own=(idx===0&&s.x<GW)||(idx===1&&s.x>W-GW);
+    if(own){s.glt+=1/60;if(s.glt>=1){if(idx===0)scoreR++;else scoreL++;resetPos()}}else s.glt=0;
+  });
+
+  // Ball
+  if(ball.grabbed){
+    var g=ball.grabbed==='left'?L:R;
+    var dir=ball.grabbed==='left'?1:-1;
+    ball.gAV+=-g.vx*0.008*dir;ball.gAV*=0.85;ball.gAngle+=ball.gAV;
+    if(ball.grabbed==='left'){if(ball.gAngle<-Math.PI/2){ball.gAngle=-Math.PI/2;ball.gAV=0}if(ball.gAngle>Math.PI/2){ball.gAngle=Math.PI/2;ball.gAV=0}}
+    else{while(ball.gAngle<0)ball.gAngle+=Math.PI*2;while(ball.gAngle>Math.PI*2)ball.gAngle-=Math.PI*2;if(ball.gAngle<Math.PI/2&&ball.gAngle>=0){ball.gAngle=Math.PI/2;ball.gAV=0}if(ball.gAngle>3*Math.PI/2){ball.gAngle=3*Math.PI/2;ball.gAV=0}}
+    var hd=SR+BR-5;ball.x=g.x+Math.cos(ball.gAngle)*hd;ball.y=g.y+Math.sin(ball.gAngle)*hd;ball.vx=g.vx;ball.vy=g.vy;
+    if(!g.grab){var rs=Math.abs(ball.gAV)*20;ball.vx=g.vx*1.5+Math.cos(ball.gAngle)*(3+rs);ball.vy=g.vy-2+Math.sin(ball.gAngle)*rs*0.3;ball.grabbed=null;ball.gAngle=0;ball.gAV=0;g.hasBall=false}
+  }else{
+    ball.vy+=GRAV;ball.vx*=BDAMP;ball.x+=ball.vx;ball.y+=ball.vy;
   }
+  if(ball.x<BR){ball.x=BR;ball.vx*=-BBOUNCE}if(ball.x>W-BR){ball.x=W-BR;ball.vx*=-BBOUNCE}
+  if(ball.y>H-GH-BR){ball.y=H-GH-BR;ball.vy*=-BBOUNCE}
+  if(ball.y<BR){ball.y=BR;ball.vy*=-BBOUNCE}
+  // Goals
+  if(ball.x<=BR&&ball.y>H-GH-GOH){scoreR++;resetPos()}
+  if(ball.x>=W-BR&&ball.y>H-GH-GOH){scoreL++;resetPos()}
+
+  // Slime-ball collision
+  [L,R].forEach(function(s,idx){
+    var nm=idx===0?'left':'right',other=idx===0?R:L;
+    var dx=ball.x-s.x,dy=ball.y-s.y,dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<SR+BR){
+      if(ball.grabbed&&ball.grabbed!==nm){var spd=Math.sqrt(s.vx*s.vx+s.vy*s.vy);if(spd>2||Math.abs(s.vy)>5){ball.grabbed=null;ball.gAngle=0;ball.gAV=0;other.hasBall=false;var a=Math.atan2(dy,dx);ball.vx=Math.cos(a)*8+s.vx;ball.vy=Math.sin(a)*8+s.vy}}
+      else if(s.grab&&!ball.grabbed){ball.grabbed=nm;ball.gAngle=Math.atan2(dy,dx);ball.gAV=0;s.hasBall=true}
+      else if(!ball.grabbed){var a2=Math.atan2(dy,dx);if(ball.y<s.y||Math.abs(a2)<Math.PI*0.5){ball.x=s.x+Math.cos(a2)*(SR+BR);ball.y=s.y+Math.sin(a2)*(SR+BR);var sp=Math.sqrt(ball.vx*ball.vx+ball.vy*ball.vy);ball.vx=Math.cos(a2)*sp*1.5+s.vx*0.5;ball.vy=Math.sin(a2)*sp*1.5+s.vy*0.5;var ns=Math.sqrt(ball.vx*ball.vx+ball.vy*ball.vy);if(ns>MAXBS){var sc=MAXBS/ns;ball.vx*=sc;ball.vy*=sc}}}
+    }
+  });
 }
 
-function drawScore(){
-  ctx.fillStyle='rgba(255,255,255,.8)';ctx.font='bold 28px "Cormorant Garamond",serif';ctx.textAlign='center';
-  ctx.fillText(aiScore,W/2,H/2-15);
-  ctx.fillText(playerScore,W/2,H/2+30);
-  // Labels
-  ctx.font='11px "Josefin Sans",sans-serif';ctx.fillStyle='rgba(255,255,255,.5)';
-  ctx.fillText('Baptiste',W/2,H/2-40);
-  ctx.fillText('Vous',W/2,H/2+50);
+function draw(){
+  ctx.fillStyle='#0000FF';ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#808080';ctx.fillRect(0,H-GH,W,GH);
+  // Goals
+  ctx.strokeStyle='#fff';ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(0,H-GH);ctx.lineTo(GW,H-GH);ctx.moveTo(GW/2,H-GH);ctx.lineTo(GW/2,H-GH-GOH);ctx.stroke();
+  ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,255,255,.8)';
+  for(var i=0;i<GW/2;i+=10){ctx.beginPath();ctx.moveTo(i,H-GH-GOH);ctx.lineTo(i,H-GH);ctx.stroke()}
+  for(var j=H-GH-GOH;j<=H-GH;j+=10){ctx.beginPath();ctx.moveTo(0,j);ctx.lineTo(GW/2,j);ctx.stroke()}
+  ctx.strokeStyle='#fff';ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(W-GW,H-GH);ctx.lineTo(W,H-GH);ctx.moveTo(W-GW/2,H-GH);ctx.lineTo(W-GW/2,H-GH-GOH);ctx.stroke();
+  ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,255,255,.8)';
+  for(var i2=W-GW/2;i2<=W;i2+=10){ctx.beginPath();ctx.moveTo(i2,H-GH-GOH);ctx.lineTo(i2,H-GH);ctx.stroke()}
+  for(var j2=H-GH-GOH;j2<=H-GH;j2+=10){ctx.beginPath();ctx.moveTo(W-GW/2,j2);ctx.lineTo(W,j2);ctx.stroke()}
+
+  // Left slime = Baptiste (with head image)
+  ctx.save();
+  ctx.beginPath();ctx.arc(L.x,L.y,SR,Math.PI,0);ctx.closePath();ctx.clip();
+  if(baptImg.complete&&baptImg.naturalWidth>0){
+    ctx.drawImage(baptImg,L.x-SR,L.y-SR,SR*2,SR*2);
+  }else{ctx.fillStyle='#00CED1';ctx.fill()}
+  ctx.restore();
+  ctx.beginPath();ctx.arc(L.x,L.y,SR,Math.PI,0);ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+
+  // Right slime = Player (red)
+  ctx.fillStyle='#DC143C';ctx.beginPath();ctx.arc(R.x,R.y,SR,Math.PI,0);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#8B0000';ctx.beginPath();ctx.arc(R.x,R.y,SR-5,Math.PI+0.3,Math.PI+0.7);ctx.arc(R.x,R.y,SR-15,Math.PI+0.7,Math.PI+0.3,true);ctx.closePath();ctx.fill();
+  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(R.x-SR*0.3,R.y-SR*0.3,5,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#000';ctx.beginPath();ctx.arc(R.x-SR*0.35,R.y-SR*0.3,2,0,Math.PI*2);ctx.fill();
+
+  // Ball
+  ctx.fillStyle='#FFD700';ctx.beginPath();ctx.arc(ball.x,ball.y,BR,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#B8860B';ctx.lineWidth=1;ctx.stroke();
+
+  // Score + Timer
+  ctx.fillStyle='rgba(255,255,255,.85)';ctx.font='bold 24px "Cormorant Garamond",serif';ctx.textAlign='center';
+  ctx.fillText(scoreL+' - '+scoreR,W/2,30);
+  ctx.font='14px "Josefin Sans",sans-serif';
+  ctx.fillText('Baptiste',150,25);ctx.fillText('Vous',650,25);
+  var m=Math.floor(timer/60),s2=timer%60;
+  ctx.fillText((m<10?'0':'')+m+':'+(s2<10?'0':'')+s2,W/2,55);
 }
 
-function drawTimer(){
-  ctx.fillStyle='rgba(255,255,255,.7)';ctx.font='bold 14px "Josefin Sans",sans-serif';ctx.textAlign='right';
-  ctx.fillText('⏱ '+gameTimer+'s',W-15,20);
-}
+function loop(){if(!gameOn)return;physics();draw();animId=requestAnimationFrame(loop)}
 
-function resetBall(dir){
-  ball.x=W/2;ball.y=H/2;
-  var angle=(Math.random()*Math.PI/3)-Math.PI/6;
-  ball.vx=Math.sin(angle)*ball.speed;
-  ball.vy=(dir||1)*Math.cos(angle)*ball.speed;
-}
-
-function update(){
-  // Player follows mouse
-  playerPaddle.x+=(mouseX-playerPaddle.x)*.15;
-  playerPaddle.x=Math.max(playerPaddle.w/2,Math.min(W-playerPaddle.w/2,playerPaddle.x));
-  // AI follows ball with delay
-  var aiTarget=ball.x+(Math.random()-.5)*30;
-  aiPaddle.x+=(aiTarget-aiPaddle.x)*.06;
-  aiPaddle.x=Math.max(aiPaddle.w/2,Math.min(W-aiPaddle.w/2,aiPaddle.x));
-  // Ball movement
-  ball.x+=ball.vx;ball.y+=ball.vy;
-  // Wall bounce
-  if(ball.x-ball.r<=0||ball.x+ball.r>=W){ball.vx*=-1;ball.x=Math.max(ball.r,Math.min(W-ball.r,ball.x))}
-  // Paddle collision — player (bottom)
-  var dx=ball.x-playerPaddle.x,dy=ball.y-playerPaddle.y,dist=Math.sqrt(dx*dx+dy*dy);
-  if(dist<ball.r+playerPaddle.w/2&&ball.vy>0){
-    var angle=Math.atan2(dx,-(dy))||0;
-    ball.vx=Math.sin(angle)*ball.speed*1.2;ball.vy=-Math.abs(Math.cos(angle)*ball.speed*1.2);
-    ball.y=playerPaddle.y-playerPaddle.w/2-ball.r;
-  }
-  // Paddle collision — AI (top)
-  dx=ball.x-aiPaddle.x;dy=ball.y-aiPaddle.y;dist=Math.sqrt(dx*dx+dy*dy);
-  if(dist<ball.r+aiPaddle.w/2&&ball.vy<0){
-    var angle2=Math.atan2(dx,dy)||0;
-    ball.vx=Math.sin(angle2)*ball.speed*1.2;ball.vy=Math.abs(Math.cos(angle2)*ball.speed*1.2);
-    ball.y=aiPaddle.y+aiPaddle.w/2+ball.r;
-  }
-  // Goal detection
-  if(ball.y-ball.r<=goalH&&ball.x>(W-goalW)/2&&ball.x<(W+goalW)/2){playerScore++;resetBall(1)}
-  if(ball.y+ball.r>=H-goalH&&ball.x>(W-goalW)/2&&ball.x<(W+goalW)/2){aiScore++;resetBall(-1)}
-  // Top/bottom bounce (outside goal)
-  if(ball.y-ball.r<=0){ball.vy=Math.abs(ball.vy);ball.y=ball.r}
-  if(ball.y+ball.r>=H){ball.vy=-Math.abs(ball.vy);ball.y=H-ball.r}
-}
-
-function gameLoop(){
-  if(!gameRunning)return;
-  ctx.clearRect(0,0,W,H);
-  drawField();update();
-  drawBall();drawPaddle(aiPaddle,true);drawPaddle(playerPaddle,false);
-  drawScore();drawTimer();
-  animFrame=requestAnimationFrame(gameLoop);
-}
-
-function startGame(){
-  playerScore=0;aiScore=0;gameTimer=60;gameRunning=true;
-  ball.speed=4;resetBall(1);
-  document.getElementById('gameStartBtn').style.display='none';
-  document.getElementById('gameScore').textContent='';
-  if(gameInterval)clearInterval(gameInterval);
-  gameInterval=setInterval(function(){
-    gameTimer--;
-    if(gameTimer<=30)ball.speed=5;
-    if(gameTimer<=15)ball.speed=6;
-    if(gameTimer<=0){
-      gameRunning=false;clearInterval(gameInterval);
-      if(animFrame)cancelAnimationFrame(animFrame);
-      var msg=playerScore>aiScore?'🎉 Victoire ! Tu as battu Baptiste '+playerScore+'-'+aiScore+'!':
-              playerScore<aiScore?'😎 Baptiste gagne '+aiScore+'-'+playerScore+'! Revanche ?':
-              '🤝 Match nul '+playerScore+'-'+aiScore+'!';
-      document.getElementById('gameScore').textContent=msg;
-      document.getElementById('gameStartBtn').textContent='Revanche !';
-      document.getElementById('gameStartBtn').style.display='inline-block';
-      // Draw final screen
-      ctx.clearRect(0,0,W,H);drawField();drawScore();
-      ctx.fillStyle='rgba(0,0,0,.5)';ctx.fillRect(0,0,W,H);
-      ctx.fillStyle='#fff';ctx.font='bold 22px "Cormorant Garamond",serif';ctx.textAlign='center';
-      ctx.fillText('Fin du match !',W/2,H/2-10);
-      ctx.font='16px "Josefin Sans",sans-serif';
-      ctx.fillText(playerScore+' - '+aiScore,W/2,H/2+20);
+window.slimeStartGame=function(dur){
+  scoreL=0;scoreR=0;timer=dur;gameOn=true;resetPos();
+  document.getElementById('slimeScore').textContent='';
+  if(timerInt)clearInterval(timerInt);
+  timerInt=setInterval(function(){
+    timer--;if(timer<=0){
+      gameOn=false;clearInterval(timerInt);if(animId)cancelAnimationFrame(animId);
+      var msg=scoreR>scoreL?'🎉 Victoire ! Vous avez battu Baptiste '+scoreR+'-'+scoreL+'!':scoreL>scoreR?'😎 Baptiste gagne '+scoreL+'-'+scoreR+'! Revanche ?':'🤝 Match nul '+scoreL+'-'+scoreR+'!';
+      document.getElementById('slimeScore').textContent=msg;
+      // Final screen
+      ctx.fillStyle='rgba(0,0,0,.6)';ctx.fillRect(0,0,W,H);
+      ctx.fillStyle='#fff';ctx.font='bold 28px "Cormorant Garamond",serif';ctx.textAlign='center';
+      ctx.fillText('Fin du match !',W/2,H/2-20);ctx.font='22px "Josefin Sans",sans-serif';ctx.fillText(scoreL+' - '+scoreR,W/2,H/2+15);
     }
   },1000);
-  gameLoop();
-}
+  loop();
+};
 
 // Draw initial state
-ctx.clearRect(0,0,W,H);drawField();
-ctx.fillStyle='rgba(255,255,255,.6)';ctx.font='bold 18px "Cormorant Garamond",serif';ctx.textAlign='center';
-ctx.fillText('⚽ Prêt à jouer ?',W/2,H/2);
+ctx.fillStyle='#0000FF';ctx.fillRect(0,0,W,H);ctx.fillStyle='#808080';ctx.fillRect(0,H-GH,W,GH);
+ctx.fillStyle='rgba(255,255,255,.6)';ctx.font='bold 20px "Cormorant Garamond",serif';ctx.textAlign='center';
+ctx.fillText('⚽ Choisis la durée pour commencer !',W/2,H/2);
+})();
 </script>
 </body>
 </html>
