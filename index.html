@@ -60,7 +60,7 @@ body{font-family:'Josefin Sans',sans-serif;font-weight:300;color:var(--text-dark
 .music-bars.playing span{animation:mBar .8s ease-in-out infinite alternate}.music-bars.playing span:nth-child(1){height:7px}.music-bars.playing span:nth-child(2){animation-delay:.15s;height:13px}.music-bars.playing span:nth-child(3){animation-delay:.3s;height:9px}.music-bars.playing span:nth-child(4){animation-delay:.1s;height:15px}.music-bars:not(.playing) span{height:3px!important;animation:none}
 #invitation{opacity:0;transform:translateY(30px);transition:opacity 1.2s ease .5s,transform 1.2s ease .5s}#invitation.revealed{opacity:1;transform:translateY(0)}
 section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;position:relative}
-.section-label{font-size:.6rem;letter-spacing:5px;text-transform:uppercase;color:var(--sage-muted);margin-bottom:.5rem}
+.section-label{font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--sage-dark);margin-bottom:.5rem;font-weight:400}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--text-dark);margin-bottom:.5rem}
 .divider{display:flex;align-items:center;justify-content:center;gap:1rem;padding:1rem 0;margin-bottom:1.5rem}
 .divider-line{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--sage-pale),transparent)}.divider-icon{color:var(--sage-muted);font-size:.9rem;opacity:.6}
@@ -77,7 +77,7 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .card-we-invite{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--text-medium);letter-spacing:2px;margin-bottom:1rem}
 .card-names{font-family:'Pinyon Script',cursive;font-size:4rem;color:var(--text-dark);line-height:1.15;text-shadow:0 1px 8px rgba(255,253,248,.5)}
 .card-ampersand{display:block;font-family:'Great Vibes',cursive;font-size:2.5rem;color:var(--sage);margin:-.2rem 0}
-.card-date-line{font-family:'Josefin Sans',sans-serif;font-size:.7rem;letter-spacing:6px;text-transform:uppercase;color:var(--sage);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(126,155,110,.15)}
+.card-date-line{font-family:'Josefin Sans',sans-serif;font-size:.85rem;font-weight:400;letter-spacing:6px;text-transform:uppercase;color:var(--sage-dark);margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(126,155,110,.15)}
 @media(max-width:600px){.invitation-card{padding:3rem 1.8rem}.card-names{font-size:2.8rem}.card-ampersand{font-size:2rem}}
 .hero-scroll{position:absolute;bottom:2rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:fadeUp 1s ease 1s forwards;opacity:0}
 .hero-scroll span{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--text-light)}
@@ -114,16 +114,16 @@ section{padding:5rem 2rem;max-width:800px;margin:0 auto;text-align:center;positi
 .rsvp-status{margin-top:1.2rem;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;text-align:center;display:none}.rsvp-status.success{display:block;color:var(--sage-dark)}.rsvp-status.error{display:block;color:var(--terracotta)}
 .game-section{background:var(--linen-light);max-width:none;padding:4rem 2rem;text-align:center;position:relative;overflow:hidden}
 .game-bg{position:absolute;inset:0;z-index:0;background-image:url('https://github.com/notremariage/A-B/blob/main/images/ireland.jpg?raw=true');background-size:cover;background-position:center;opacity:.12}
-.game-container{position:relative;z-index:1;max-width:460px;margin:0 auto}
-.c4-board{display:inline-grid;grid-template-columns:repeat(7,1fr);gap:6px;background:linear-gradient(135deg,var(--sage),var(--sage-dark));border-radius:16px;padding:12px;box-shadow:0 10px 40px rgba(0,0,0,.15);margin-top:1.5rem}
-.c4-cell{width:52px;height:52px;border-radius:50%;background:var(--ivory);border:3px solid rgba(0,0,0,.08);cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.game-container{position:relative;z-index:1;max-width:460px;margin:0 auto;overflow:hidden;display:flex;flex-direction:column;align-items:center}
+.c4-board{display:inline-grid;grid-template-columns:repeat(7,1fr);gap:6px;background:linear-gradient(135deg,var(--sage),var(--sage-dark));border-radius:16px;padding:12px;box-shadow:0 10px 40px rgba(0,0,0,.15);margin-top:1.5rem;max-width:100%;width:410px}
+.c4-cell{width:100%;aspect-ratio:1;border-radius:50%;background:var(--ivory);border:3px solid rgba(0,0,0,.08);cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
 .c4-cell:hover{background:var(--linen);transform:scale(1.05)}
 .c4-cell.red{background:radial-gradient(circle at 35% 35%,#ff6b6b,#DC143C 60%,#8B0000);border-color:rgba(139,0,0,.3);cursor:default}
 .c4-cell.yellow{background:radial-gradient(circle at 35% 35%,#FFD700,#FFA500 60%,#B8860B);border-color:rgba(184,134,11,.3);cursor:default}
 .c4-cell.win{animation:c4pulse 0.6s ease-in-out infinite alternate;box-shadow:0 0 15px rgba(255,255,255,.5)}
 .c4-cell.last{box-shadow:0 0 0 3px rgba(255,255,255,.4)}
 @keyframes c4pulse{0%{transform:scale(1)}100%{transform:scale(1.1)}}
-@media(max-width:500px){.c4-cell{width:40px;height:40px}.c4-board{gap:4px;padding:8px}}
+@media(max-width:500px){.c4-board{gap:4px;padding:8px;width:calc(100vw - 4rem);max-width:350px}}
 .c4-status{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--text-dark);margin-top:1.2rem;min-height:2rem}
 .btn-game{font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;border:1px solid var(--sage);background:transparent;color:var(--sage);border-radius:25px;padding:.7rem 2rem;cursor:pointer;transition:all .3s;margin-top:1rem}.btn-game:hover{background:var(--sage);color:var(--white)}
 footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;padding:4rem 2rem;position:relative}
@@ -197,7 +197,7 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <div class="section-wide cadeau-section"><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">Voyage de lune de miel</p><h2 class="section-title">Cadeau</h2></div>
 <div class="divider reveal"><div class="divider-line"></div><span class="divider-icon">✿</span><div class="divider-line"></div></div>
-<div class="cadeau-content reveal reveal-d1"><div class="cadeau-icon">🌙</div><p class="cadeau-text">Pour contribuer à notre voyage de lune de miel, une jolie boîte sera à votre disposition sur place où vous pourrez déposer votre enveloppe.</p></div>
+<div class="cadeau-content reveal reveal-d1"><div class="cadeau-icon">🌙</div><p class="cadeau-text">Pour ceux qui le souhaitent, une jolie boîte sera à votre disposition sur place où vous pourrez déposer votre enveloppe pour contribuer à notre voyage de lune de miel.</p></div>
 </section></div>
 <div class="section-wide rsvp-section" id="rsvp"><div class="rsvp-bg"></div><div class="lav-side lav-side-left"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div><div class="lav-side lav-side-right"><svg viewBox="0 0 30 100"><line x1="15" y1="100" x2="15" y2="12" stroke="#8FA882" stroke-width="1" opacity=".5"/><ellipse cx="15" cy="10" rx="3.5" ry="5" fill="#9B8EC4" opacity=".5"/><ellipse cx="15" cy="20" rx="4" ry="5.5" fill="#A998CB" opacity=".45"/><ellipse cx="15" cy="30" rx="4" ry="5" fill="#B5A6D2" opacity=".38"/></svg></div>
 <section><div class="reveal"><p class="section-label">On compte sur vous</p><h2 class="section-title">Confirmation de Présence</h2></div>
