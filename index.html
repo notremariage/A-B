@@ -6,7 +6,7 @@
 <title>Anaïs & Baptiste — 20 Juin 2026</title>
 <meta property="og:title" content="Anaïs et Baptiste - 20 juin 2026 🤍">
 <meta property="og:description" content="Nous avons l'immense joie de vous inviter à notre mariage">
-<meta property="og:image" content="https://raw.githubusercontent.com/notremariage/A-B/main/images/Guiness.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/notremariage/A-B/main/images/NY.jpg">
 <meta property="og:type" content="website">
 <meta name="description" content="Anaïs et Baptiste - 20 juin 2026 🤍">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,32 +433,54 @@ function launchVictory(){
 window.submitScore=function(){
   var name=document.getElementById('winnerName').value.trim();
   if(!name)return;
+  document.getElementById('namePrompt').style.display='none';
+  // Save locally
   var scores=JSON.parse(localStorage.getItem('c4scores')||'[]');
   scores.push({name:name,time:winTime,moves:moveCount,date:new Date().toLocaleDateString('fr-FR')});
   scores.sort(function(a,b){return a.time-b.time});
   if(scores.length>10)scores=scores.slice(0,10);
   localStorage.setItem('c4scores',JSON.stringify(scores));
-  document.getElementById('namePrompt').style.display='none';
-  renderLeaderboard();
-  // Envoyer le score par email à Baptiste
+  // Send to shared Google Sheet
+  var SHEET_URL=localStorage.getItem('c4sheetUrl')||'';
+  if(SHEET_URL){
+    fetch(SHEET_URL+'?action=add&name='+encodeURIComponent(name)+'&time='+winTime+'&moves='+moveCount,{mode:'no-cors'}).catch(function(){});
+    setTimeout(function(){renderLeaderboard()},1500);
+  } else {
+    renderLeaderboard();
+  }
+  // Email to Baptiste
   var fd=new FormData();
   fd.append('_subject','🏆 Nouveau score Puissance 4 - Mariage A&B');
-  fd.append('Joueur',name);
-  fd.append('Temps',winTime+'s');
-  fd.append('Coups',moveCount);
+  fd.append('Joueur',name);fd.append('Temps',winTime+'s');fd.append('Coups',moveCount);
   fd.append('Date',new Date().toLocaleDateString('fr-FR')+' '+new Date().toLocaleTimeString('fr-FR'));
   fetch('https://formsubmit.co/ajax/baptiste.mouthon@gmail.com',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).catch(function(){});
 };
 
 function renderLeaderboard(){
-  var scores=JSON.parse(localStorage.getItem('c4scores')||'[]');
   var el=document.getElementById('leaderList');
+  var SHEET_URL=localStorage.getItem('c4sheetUrl')||'';
+  if(SHEET_URL){
+    fetch(SHEET_URL+'?action=get').then(function(r){return r.json()}).then(function(data){
+      if(data&&data.scores&&data.scores.length>0){
+        displayScores(data.scores);
+      } else {
+        displayScores(JSON.parse(localStorage.getItem('c4scores')||'[]'));
+      }
+    }).catch(function(){displayScores(JSON.parse(localStorage.getItem('c4scores')||'[]'))});
+  } else {
+    displayScores(JSON.parse(localStorage.getItem('c4scores')||'[]'));
+  }
+}
+function displayScores(scores){
+  var el=document.getElementById('leaderList');
+  scores.sort(function(a,b){return a.time-b.time});
+  if(scores.length>10)scores=scores.slice(0,10);
   if(scores.length===0){el.innerHTML='<p style="font-family:\'Caveat\',cursive;color:var(--text-light);font-size:1rem">Personne n\'a encore gagné… Sois le premier ! 💪</p>';return}
   var html='<table style="width:100%;border-collapse:collapse;font-family:\'Josefin Sans\',sans-serif;font-size:.8rem">';
   html+='<tr style="color:var(--sage-dark);border-bottom:1px solid var(--sage-pale)"><td style="padding:.4rem;text-align:left">🏅</td><td style="padding:.4rem;text-align:left">Prénom</td><td style="padding:.4rem;text-align:center">Temps</td><td style="padding:.4rem;text-align:center">Coups</td></tr>';
   for(var i=0;i<scores.length;i++){
     var medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
-    html+='<tr style="border-bottom:1px solid rgba(0,0,0,.05)"><td style="padding:.4rem">'+medal+'</td><td style="padding:.4rem;text-align:left;color:var(--text-dark)">'+scores[i].name+'</td><td style="padding:.4rem;text-align:center;color:var(--sage-dark)">'+scores[i].time+'s</td><td style="padding:.4rem;text-align:center;color:var(--text-light)">'+scores[i].moves+'</td></tr>';
+    html+='<tr style="border-bottom:1px solid rgba(0,0,0,.05)'+(i===0?';background:rgba(255,215,0,.08)':'')+'"><td style="padding:.4rem">'+medal+'</td><td style="padding:.4rem;text-align:left;color:var(--text-dark)">'+scores[i].name+'</td><td style="padding:.4rem;text-align:center;color:var(--sage-dark);font-weight:400">'+scores[i].time+'s</td><td style="padding:.4rem;text-align:center;color:var(--text-light)">'+scores[i].moves+'</td></tr>';
   }
   html+='</table>';el.innerHTML=html;
 }
