@@ -205,7 +205,7 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <div class="rsvp-card reveal reveal-d1">
 <form class="rsvp-form" id="rsvpForm">
 <input type="hidden" name="_subject" value="Nouvelle confirmation - Mariage A&amp;B">
-<p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-medium);font-style:italic;margin-bottom:.5rem">Merci de nous répondre avant le 31 mars 💌</p>
+<p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-medium);font-style:italic;margin-bottom:.5rem">Merci de nous répondre avant le 12 avril 💌</p>
 <input type="text" name="Nom" placeholder="Votre nom" required>
 <input type="text" name="Prénom" placeholder="Votre prénom" required>
 <input type="number" name="Nombre de personnes" placeholder="👥 Nombre de personnes" min="1" max="20" required>
@@ -226,6 +226,17 @@ footer{background:var(--text-dark);color:rgba(255,253,248,.6);text-align:center;
 <div id="victoryBox" style="display:none;margin-top:1.5rem;text-align:center">
 <img src="https://github.com/notremariage/A-B/blob/main/images/NY.jpg?raw=true" style="max-width:100%;max-height:350px;border-radius:14px;border:4px solid var(--sage-pale);box-shadow:0 8px 30px rgba(106,91,74,.15)">
 <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--sage-dark);margin-top:1rem">🎉 Whaooou tu es fin prêt !! 🎉</p>
+<p id="victoryTime" style="font-family:'Caveat',cursive;font-size:1.1rem;color:var(--text-medium);margin-top:.5rem"></p>
+<div id="namePrompt" style="display:none;margin-top:1rem">
+<p style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-medium);margin-bottom:.5rem">Entre ton prénom pour le classement :</p>
+<input type="text" id="winnerName" placeholder="Ton prénom" style="font-family:'Josefin Sans',sans-serif;font-size:.9rem;padding:.6rem 1rem;border:1px solid var(--sage-pale);border-radius:10px;outline:none;width:180px;text-align:center">
+<button onclick="submitScore()" style="font-family:'Josefin Sans',sans-serif;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;background:var(--sage);color:var(--white);border:none;border-radius:20px;padding:.6rem 1.5rem;cursor:pointer;margin-left:.5rem">Valider</button>
+</div>
+</div>
+<div id="leaderboard" style="margin-top:1.5rem;text-align:center">
+<p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--sage-dark);margin-bottom:.8rem">🏆 Classement des plus rapides</p>
+<div id="leaderList" style="max-width:320px;margin:0 auto"></div>
+<p style="font-family:'Caveat',cursive;font-size:1rem;color:var(--terracotta);margin-top:1rem;line-height:1.5">Le plus rapide sera invité à une journée surprise avec les mariés ! 🎁</p>
 </div>
 </div>
 </section></div>
@@ -276,11 +287,15 @@ var ROWS=6,COLS=7,board,human='red',ai='yellow',gameOver,currentPlayer;
 var boardEl=document.getElementById('c4Board');
 var statusEl=document.getElementById('c4Status');
 var resetBtn=document.getElementById('c4Reset');
+var gameStartTime=0,moveCount=0;
 
 function init(){
   board=[];for(var r=0;r<ROWS;r++){board[r]=[];for(var c=0;c<COLS;c++)board[r][c]=null}
-  gameOver=false;currentPlayer=human;
+  gameOver=false;currentPlayer=human;moveCount=0;gameStartTime=Date.now();
   render();statusEl.textContent='À toi de jouer !';resetBtn.style.display='none';
+  document.getElementById('victoryBox').style.display='none';
+  document.getElementById('namePrompt').style.display='none';
+  renderLeaderboard();
 }
 
 function render(){
@@ -384,6 +399,7 @@ function aiMove(){
 function onCellClick(col){
   if(gameOver||currentPlayer!==human)return;
   var row=getRow(board,col);if(row===-1)return;
+  moveCount++;
   board[row][col]=human;render();
   highlightLast(row,col);
   var w=checkWin(board,row,col);
@@ -403,9 +419,49 @@ function showWin(winCells){
   for(var i=0;i<winCells.length;i++){var idx=winCells[i][0]*COLS+winCells[i][1];if(cells[idx])cells[idx].classList.add('win')}
 }
 
-window.c4Reset=function(){init();document.getElementById('victoryBox').style.display='none'};
+window.c4Reset=function(){init()};
 
-function launchVictory(){document.getElementById('victoryBox').style.display='block'}
+var winTime=0;
+function launchVictory(){
+  winTime=Math.round((Date.now()-gameStartTime)/1000);
+  document.getElementById('victoryBox').style.display='block';
+  document.getElementById('victoryTime').textContent='⏱ Gagné en '+winTime+'s avec '+moveCount+' coups !';
+  document.getElementById('namePrompt').style.display='block';
+  document.getElementById('winnerName').focus();
+}
+
+window.submitScore=function(){
+  var name=document.getElementById('winnerName').value.trim();
+  if(!name)return;
+  var scores=JSON.parse(localStorage.getItem('c4scores')||'[]');
+  scores.push({name:name,time:winTime,moves:moveCount,date:new Date().toLocaleDateString('fr-FR')});
+  scores.sort(function(a,b){return a.time-b.time});
+  if(scores.length>10)scores=scores.slice(0,10);
+  localStorage.setItem('c4scores',JSON.stringify(scores));
+  document.getElementById('namePrompt').style.display='none';
+  renderLeaderboard();
+  // Envoyer le score par email à Baptiste
+  var fd=new FormData();
+  fd.append('_subject','🏆 Nouveau score Puissance 4 - Mariage A&B');
+  fd.append('Joueur',name);
+  fd.append('Temps',winTime+'s');
+  fd.append('Coups',moveCount);
+  fd.append('Date',new Date().toLocaleDateString('fr-FR')+' '+new Date().toLocaleTimeString('fr-FR'));
+  fetch('https://formsubmit.co/ajax/baptiste.mouthon@gmail.com',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).catch(function(){});
+};
+
+function renderLeaderboard(){
+  var scores=JSON.parse(localStorage.getItem('c4scores')||'[]');
+  var el=document.getElementById('leaderList');
+  if(scores.length===0){el.innerHTML='<p style="font-family:\'Caveat\',cursive;color:var(--text-light);font-size:1rem">Personne n\'a encore gagné… Sois le premier ! 💪</p>';return}
+  var html='<table style="width:100%;border-collapse:collapse;font-family:\'Josefin Sans\',sans-serif;font-size:.8rem">';
+  html+='<tr style="color:var(--sage-dark);border-bottom:1px solid var(--sage-pale)"><td style="padding:.4rem;text-align:left">🏅</td><td style="padding:.4rem;text-align:left">Prénom</td><td style="padding:.4rem;text-align:center">Temps</td><td style="padding:.4rem;text-align:center">Coups</td></tr>';
+  for(var i=0;i<scores.length;i++){
+    var medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1);
+    html+='<tr style="border-bottom:1px solid rgba(0,0,0,.05)"><td style="padding:.4rem">'+medal+'</td><td style="padding:.4rem;text-align:left;color:var(--text-dark)">'+scores[i].name+'</td><td style="padding:.4rem;text-align:center;color:var(--sage-dark)">'+scores[i].time+'s</td><td style="padding:.4rem;text-align:center;color:var(--text-light)">'+scores[i].moves+'</td></tr>';
+  }
+  html+='</table>';el.innerHTML=html;
+}
 init();
 })();
 </script>
